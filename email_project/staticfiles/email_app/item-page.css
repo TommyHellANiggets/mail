@@ -1,0 +1,566 @@
+@font-face {
+    font-family: "Unbounded"; 
+    src: url("../fonts/Unbounded.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
+
+  @font-face {
+    font-family: "Muller"; 
+    src: url("../fonts/Muller.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) #ffffff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button, input, textarea {
+    border: none;
+    outline: none;
+    background: none;
+    font: inherit;
+}
+
+input, textarea {
+    resize: none;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #ffffff;
+    display: none;
+}
+
+main {
+    position: relative;
+}
+
+html {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.navbar {
+    max-width: 1126px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+.nav-links {
+    font-size: 18px;
+    line-height: 17px;
+    color: #21333b;
+    font-family: "Muller";
+    margin-right: 35px;
+}
+
+.right-nav {
+    font-size: 23px;
+    line-height: 29px;
+    color: #66659e;
+    font-weight: 500;
+    font-family: "Muller";
+}
+
+.pages::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0%200%2024%2024" width="512" height="512"><path fill="%238a8a8a" d="M15.4,9.88,10.81,5.29a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42L14,11.29a1,1,0,0,1,0,1.42L9.4,17.29a1,1,0,0,0,1.41,1.42l4.59-4.59A3,3,0,0,0,15.4,9.88Z"/></svg>');
+    background-size: cover;
+    margin-right: 16px;
+    vertical-align: middle;
+}
+
+.main-page, .pages {
+    font-size: 12px;
+    letter-spacing: 2px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: #8a8a8a;
+    font-family: "Muller Regular";
+}
+
+.container-small {
+    max-width: 1126px !important;
+    margin: 0 auto;
+    position: relative;
+    padding: 100px 0;
+}
+
+.container-items {
+    display: flex;
+    margin: auto;
+    margin-top: 100px;
+    max-width: 1126px; /* This is for your reference but do not include in actual CSS */
+}
+
+.product-image {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px; /* Space between main image and additional images */
+}
+
+.additional-images {
+    display: flex;
+    gap: 10px;
+}
+
+.additional-images img {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+}
+
+.product-details {
+    flex: 1;
+}
+
+.product-details svg {
+    height: 24px;
+    aspect-ratio: 1;
+}
+
+.product-details h2 {
+    font-size: 32px;
+    line-height: 31px;
+    color: #605f9a;
+    font-family: "Muller";
+    margin-bottom: 10px;
+}
+
+.product-color {
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.product-color p {
+    font-size: 17px;
+    line-height: 22px;
+    color: #21333b;
+    font-family: "Muller";
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.color-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #A67C60; /* Brown color representing "капучино" */
+}
+
+.product-size {
+    font-size: 17px;
+    line-height: 22px;
+    color: #21333b;
+    font-family: "Muller";
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.sizes {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.size {
+    border: 1px solid #6b6b6b;
+    padding: 5px 20px;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 19px;
+    color: #6b6b6b;
+    font-family: "Muller";
+    border-radius: 10px 0;
+}
+
+.size.selected {
+    background-color: #A67C60;
+    color: white;
+}
+
+.product-rating {
+    margin: 15px 0;
+}
+
+.star {
+    font-size: 20px;
+    color: #ccc;
+}
+
+.star.filled {
+    color: #FFD700;
+}
+
+.product-description {
+    margin-top: 50px;
+}
+
+.product-description h2 {
+    font-size: 17px;
+    line-height: 22px;
+    text-transform: uppercase;
+    color: #21333b;
+    font-family: "Muller";
+}
+
+.product-description p {
+    font-size: 15px;
+    line-height: 19px;
+    color: #6b6b6b;
+    font-family: "Muller";
+    margin-bottom: 10px;
+    margin-top: -5px;
+    font-weight: 600;
+}
+
+.product-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.buy-now {
+    background-color: #FF4500;
+    color: white;
+}
+
+.add-to-cart {
+    background-color: #ccc;
+    color: black;
+}
+
+.stars {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.stars svg {
+    height: 16px;
+    aspect-ratio: 1;
+    fill: #9fff2b;
+}
+
+.product-details-con {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.tab-size {
+    font-size: 15px;
+    line-height: 19px;
+    text-decoration: underline;
+    color: #6b6b6b;
+    font-family: "Muller";
+}
+
+.product-care {
+    margin-top: 50px;
+}
+
+.product-care h2 {
+    font-size: 17px;
+    line-height: 22px;
+    text-transform: uppercase;
+    color: #21333b;
+    font-family: "Muller";
+    margin-bottom: 15px;
+}
+
+.product-care p {
+    font-size: 15px;
+    line-height: 19px;
+    color: #6b6b6b;
+    font-family: "Muller";
+    margin-bottom: 10px;
+    margin-top: -10px;
+    font-weight: 600;
+    text-decoration: underline;
+    margin-bottom: 25px;
+}
+
+.product-care p::before {
+
+}
+
+.another-img {
+    margin-top: 30px;
+    margin-bottom: 160px;
+}
+
+.more-img {
+    margin-right: 13px;
+}
+
+.cards-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between; /* Пространство между карточками */
+    flex-wrap: nowrap; /* Карточки в одну строку */
+    gap: 45px; /* Пространство между карточками */
+}
+
+.card {
+    width: 240px; /* Ширина карточки */
+    background-color: #fff; /* Белый фон */
+    overflow: hidden; /* Скрывает выходящие за границы элементы */
+    display: flex;
+    flex-direction: column; /* Выровнять элементы по вертикали */
+    transition: transform 0.3s ease; /* Эффект плавного перехода */
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Легкий подъем карточки при наведении */
+}
+
+.card img {
+    width: 100%; /* Изображение занимает всю ширину карточки */
+    height: 340px; /* Фиксированная высота изображения */
+    object-fit: cover; /* Кадрирование изображения */
+}
+
+.card-details {
+    padding: 5px;
+}
+
+.top-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.more-info {
+    font-size: 16px;
+    letter-spacing: 0px;
+    line-height: 16px;
+    text-decoration: underline;
+    color: #969696;
+    font-family: "Muller";
+}
+
+.colors {
+    font-size: 16px;
+    letter-spacing: 0px;
+    line-height: 16px;
+    color: #141414;
+    font-family: "Muller";
+}
+
+.card h3 {
+    margin: 10px 0; /* Отступы вокруг заголовка */
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 26px;
+    color: #000000;
+    font-family: "Muller";
+}
+
+.store-icons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px; /* Отступы между иконками */
+}
+
+.store-icons img {
+    width: 35px; /* Размер иконок */
+    height: auto; /* Сохраняем пропорции иконок */
+}
+
+.similar-products h2 {
+    font-size: 22px;
+    line-height: 28px;
+    text-transform: uppercase;
+    color: #21333b;
+    font-family: "Muller";
+}
+
+/* Footer */
+footer {
+    background-color: #686b99;
+    height: 500px !important;
+    padding: 90px 0;
+    color: #e9e9e9;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 3fr 3fr;
+    grid-template-rows: auto 1fr auto;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-logo {
+    grid-column: 1 / 2;
+    text-align: left;
+}
+
+.footer-logo img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.footer-info {
+    font-size: 17px;
+    line-height: 22px;
+    color: #ffffff;
+    font-weight: 300;
+    font-family: "Muller";
+}
+
+.footer-links {
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+}
+
+.footer-column p {
+    margin: 30px 0;
+    
+}
+
+.footer-title-p {
+    font-size: 17px;
+    line-height: 22px;
+    color: #ffffff;
+    font-weight: 500;
+    font-family: "Unbounded";
+    padding-bottom: 28px;
+
+}
+
+.footer-title {
+    font-size: 17px;
+    line-height: 22px;
+    color: #ffffff;
+    font-weight: 500;
+    font-family: "Unbounded";
+    padding-bottom: 28px;
+}
+
+.footer-links a {
+    font-size: 17px;
+    line-height: 22px;
+    color: #ffffff;
+    font-weight: 300;
+    font-family: "Muller";
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-address {
+    grid-column: 3 / 4;
+    font-size: 14px;
+    line-height: 1.3;
+    margin-top: 70px;
+    font-size: 17px;
+    line-height: 22px;
+    color: #ffffff;
+    font-weight: 300;
+    font-family: "Muller";
+    text-align: right;
+}
+
+.footer-address a.phone {
+    display: block;
+    margin-top: 40px;
+    font-size: 23px;
+    line-height: 29px;
+    color: #a0ff2b;
+    font-weight: 500;
+    font-family: "Muller";
+}
+
+.footer-address a.phone:hover {
+    text-decoration: underline;
+}
+
+.footer-policies {
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 50px;
+}
+
+.footer-policies a {
+    margin: 0 15px;
+    color: #e9e9e9;
+}
+
+.footer-policies a:hover {
+    text-decoration: underline;
+}
+
+footer p, a {
+    font-size: 18px;
+}
+
+.footer-address svg {
+    fill: #a0ff2b;
+    height: 20px;
+    aspect-ratio: 1;
+    margin-right: 8px; 
+}
+
+.footer-address .phone {
+    text-decoration: none; 
+    color: inherit; 
+}

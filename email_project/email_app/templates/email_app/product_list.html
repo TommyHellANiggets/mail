@@ -1,0 +1,218 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'email_app/teenagers.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div class="container-love-winter">
+            <div class="navbar">
+                <div class="left-nav">
+                    <a href="" class="nav-links">О бренде</a>
+                    <a href="catalog.html" class="nav-links" style="text-decoration: underline;">Каталог</a>
+                    <a href="" class="nav-links">Оптовикам</a>
+                </div>
+                <div class="right-nav">
+                    <p>+7 (900) 451-00-06</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="text-left">ПОДРОСТКИ</div>
+                <div class="image-container">
+                    <img src="{% static 'img/girl-tava.png' %}" class="image-center" alt="Girl">
+                </div>
+            </div>
+        </div>
+        <div class="container-small">
+            <div class="links">
+                <a href="main.html" class="main-page">главная</a>
+                <a href="catalog.html" class="pages">каталог</a>
+                <a href="" class="pages">ПОДРОСТКИ</a>
+            </div>
+            <h1>коллекция</h1>
+            <div class="cards-container">
+            {% for product in products %}
+            <div class="card">
+                <a href="{% url 'product-detail' product.pk %}">
+                    {% if product.images.first %}
+                        <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                        <img src="{% static 'img/default.jpg' %}" alt="No image available">
+                    {% endif %}
+                </a>
+                <div class="card-details">
+                    <div class="top-info">
+                        <a href="{% url 'product-detail' product.pk %}">
+                            <span class="more-info">Подробнее...</span>
+                        </a>
+                        <span class="colors">+ {{ product.colors.count }} цвета</span>
+                    </div>
+                    <h3>{{ product.name }}</h3>
+                    <div class="store-icons">
+                        <a href="#"><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
+                        <a href="#"><img src="{% static 'img/wb.png' %}" alt="WB"></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+            <div class="cards-container">
+                <div class="card">
+                    <img src="{% static 'img/child (1).png' %}" alt="Product Image 1">
+                    <div class="card-details">
+                        <div class="top-info">
+                            <span class="more-info">Подробнее...</span>
+                            <span class="colors">+ 2 цвета</span>
+                        </div>
+                        <h3>Кофта флисовая на замке</h3>
+                        <div class="store-icons">
+                            <a href=""><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
+                            <a href=""><img src="{% static 'img/wb.png' %}" alt="WB"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="{% static 'img/child (2).png' %}" alt="Product Image 2">
+                    <div class="card-details">
+                        <div class="top-info">
+                            <span class="more-info">Подробнее...</span>
+                            <span class="colors">+ 2 цвета</span>
+                        </div>
+                        <h3>Кофта флисовая на замке</h3>
+                        <div class="store-icons">
+                            <a href=""><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
+                            <a href=""><img src="{% static 'img/wb.png' %}" alt="WB"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="{% static 'img/child (3).png' %}" alt="Product Image 3">
+                    <div class="card-details">
+                        <div class="top-info">
+                            <span class="more-info">Подробнее...</span>
+                            <span class="colors">+ 2 цвета</span>
+                        </div>
+                        <h3>Кофта флисовая на замке</h3>
+                        <div class="store-icons">
+                            <a href=""><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
+                            <a href=""><img src="{% static 'img/wb.png' %}" alt="WB"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="{% static 'img/child (4).png' %}" alt="Product Image 4">
+                    <div class="card-details">
+                        <div class="top-info">
+                            <span class="more-info">Подробнее...</span>
+                            <span class="colors">+ 2 цвета</span>
+                        </div>
+                        <h3>Кофта флисовая на замке</h3>
+                        <div class="store-icons">
+                            <a href=""><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
+                            <a href=""><img src="{% static 'img/wb.png' %}" alt="WB"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <img src="{% static 'img/child (1).png' %}" alt="Product Image 1">
+                    <div class="card-details">
+                        <div class="top-info">
+                            <span class="more-info">Подробнее...</span>
+                            <span class="colors">+ 2 цвета</span>
+                        </div>
+                        <h3>Кофта флисовая на замке</h3>
+                        <div class="store-icons">
+                            <a href=""><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
+                            <a href=""><img src="{% static 'img/wb.png' %}" alt="WB"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="{% static 'img/child (2).png' %}" alt="Product Image 2">
+                    <div class="card-details">
+                        <div class="top-info">
+                            <span class="more-info">Подробнее...</span>
+                            <span class="colors">+ 2 цвета</span>
+                        </div>
+                        <h3>Кофта флисовая на замке</h3>
+                        <div class="store-icons">
+                            <a href=""><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
+                            <a href=""><img src="{% static 'img/wb.png' %}" alt="WB"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="{% static 'img/child (3).png' %}" alt="Product Image 3">
+                    <div class="card-details">
+                        <div class="top-info">
+                            <span class="more-info">Подробнее...</span>
+                            <span class="colors">+ 2 цвета</span>
+                        </div>
+                        <h3>Кофта флисовая на замке</h3>
+                        <div class="store-icons">
+                            <a href=""><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
+                            <a href=""><img src="{% static 'img/wb.png' %}" alt="WB"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="{% static 'img/child (4).png' %}" alt="Product Image 4">
+                    <div class="card-details">
+                        <div class="top-info">
+                            <span class="more-info">Подробнее...</span>
+                            <span class="colors">+ 2 цвета</span>
+                        </div>
+                        <h3>Кофта флисовая на замке</h3>
+                        <div class="store-icons">
+                            <a href=""><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
+                            <a href=""><img src="{% static 'img/wb.png' %}" alt="WB"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="{% static 'img/logo-footer.png' %}" alt="Logo">
+                <div class="footer-info">
+                    <p>ИП Михайлов<br>Илья Владимирович<br>318213000017900</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <p class="footer-title">Разделы</p>
+                    <p><a href="#">О бренде</a></p>
+                    <p><a href="#">Каталог</a></p>
+                </div>
+                <div class="footer-column">
+                    <p class="footer-title-p">&nbsp;</p> 
+                    <p><a href="#">Оптовикам</a></p>
+                    <p><a href="#">Контакты</a></p>
+                </div>
+            </div>
+            <div class="footer-address">
+                <p>Адрес производства:<br>Чувашская Республика<br>г. Чебоксары, Эгерский бульвар 48</p>
+                <p class="footer-address">
+                    <a href="tel:+79004510006" class="phone">
+                        <span>+7 (900) 451-00-06</span>
+                    </a>
+                </p>
+            </div>
+            <div class="footer-policies">
+                <a href="{% url 'privacy_policy' %}">Политика конфиденциальности</a>
+                <a href="{% url 'user_agreement' %}">Пользовательское соглашение</a>
+                <a href="{% url 'personal_data' %}">Согласие на обработку персональных данных</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

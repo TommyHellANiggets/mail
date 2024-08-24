@@ -1,0 +1,139 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'email_app/opt.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="left-nav">
+                <a href="" class="nav-links">О бренде</a>
+                <a href="catalog.html" class="nav-links">Каталог</a>
+                <a href="" class="nav-links" style="text-decoration: underline;">Оптовикам</a>
+            </div>
+            <div class="between-nav">
+                <a href="{% url 'main' %}"><img src="{% static 'img/logo.png' %}" alt="TOVO"></a>
+            </div>
+            <div class="right-nav">
+                <p>+7 (900) 451-00-06</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container-small">
+            <h1>
+                СДЕЛАЙТЕ ОПТОВЫЙ ЗАКАЗ В ДВА ШАГА!
+            </h1>
+            <div class="first-step">
+                <div class="first-left-content">
+                    <img src="{% static 'img/steps (2).png' %}" alt="Первый шаг">
+                </div>
+                <div class="first-right-content">
+                    <h2>Заполните форму для получения прайс-листа</h2>
+                    <form id="subscribeForm" method="POST" action="{% url 'opt' %}">
+                        {% csrf_token %}
+                        <input type="text" name="full_name" placeholder="ФИО">
+                        <input type="text" name="company_name" placeholder="Название компании">
+                        <input type="number" name="phone_number" placeholder="Телефон">
+                        <input type="email" name="email" placeholder="E-mail">
+                        <button type="submit" class="btn">Отправить</button>
+                    </form>
+                    <p id="responseMessage" style="display:none;"></p>
+                </div>
+            </div>
+            <div class="second-step">
+                <div class="second-left-content">
+                    <p>
+                        Наш менеджер с Вами
+                        свяжется, уточнит все
+                        детали и пожелания,
+                        согласует сроки и
+                        отправит Вам товар.
+                    </p>
+                </div>
+                <div class="second-right-content">
+                    <img src="{% static 'img/steps (3).png' %}" alt="Второй шаг">
+                </div>
+            </div>
+            <div class="guarantees">
+                <h1>НАШИ ГАРАНТИИ</h1>
+                <p class="guarantees-text">Наша продукция и технология производства соответствует
+                    мировым стандартам BASC, AMTAC, AMTEX. Сертификация
+                    данными организациями является показателем качества
+                    и надежности.</p>
+                <p class="guarantees-text">
+                    Товар перед отправкой проходит тщательную проверку
+                    на предмет брака и дефектов.
+                    </p>
+                <p class="guarantees-text">
+                    Каждый заказ будет доставлен в целости и сохранности.
+                    Вы получите товар, соответствующий тому, который
+                    изображен на фото.</p>
+            </div>
+            <div class="certificates">
+                <h1>СЕРТИФИКАТЫ</h1>
+                <div class="img-group">
+                    <img src="{% static 'img/steps (5).png' %}" alt="Сертификат">
+                    <img src="{% static 'img/steps (5).png' %}" alt="Сертификат">
+                    <img src="{% static 'img/steps (5).png' %}" alt="Сертификат">
+                </div>
+            </div>
+        </div>
+        <div class="green-box">
+            <div class="container-small2">
+                <div class="green-left">
+                    <h2>
+                        МЫ ВСЕГДА ОТКРЫТЫ
+                        ДЛЯ КАЧЕСТВЕННОГО
+                        И ВЗАИМОВЫГОДНОГО
+                        СОТРУДНИЧЕСТВА!
+                    </h2>
+                </div>
+                <div class="green-right">
+                    <img class="constant" src="{% static 'img/steps (4).png' %}" alt="">
+                    <img class="temporary" src="{% static 'img/steps (1).png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="{% static 'img/logo-footer.png' %}" alt="Logo">
+                <div class="footer-info">
+                    <p>ИП Михайлов<br>Илья Владимирович<br>318213000017900</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <p class="footer-title">Разделы</p>
+                    <p><a href="#">О бренде</a></p>
+                    <p><a href="#">Каталог</a></p>
+                </div>
+                <div class="footer-column">
+                    <p class="footer-title-p">&nbsp;</p>
+                    <p><a href="#">Оптовикам</a></p>
+                    <p><a href="#">Контакты</a></p>
+                </div>
+            </div>
+            <div class="footer-address">
+                <p>Адрес производства:<br>Чувашская Республика<br>г. Чебоксары, Эгерский бульвар 48</p>
+                <p class="footer-address">
+                    <a href="tel:+79004510006" class="phone">
+                        <span>+7 (900) 451-00-06</span>
+                    </a>
+                </p>
+            </div>
+            <div class="footer-policies">
+                <a href="{% url 'privacy_policy' %}">Политика конфиденциальности</a>
+                <a href="{% url 'user_agreement' %}">Пользовательское соглашение</a>
+                <a href="{% url 'personal_data' %}">Согласие на обработку персональных данных</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

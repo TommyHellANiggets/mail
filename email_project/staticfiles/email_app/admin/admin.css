@@ -1,0 +1,23 @@
+.color-checkbox li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.color-checkbox li label {
+    margin-left: 10px;
+    position: relative;
+}
+
+.color-checkbox li label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: currentColor; /* Динамически использовать цвет текста */
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+}

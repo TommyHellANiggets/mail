@@ -1,0 +1,386 @@
+@font-face {
+    font-family: "Unbounded"; 
+    src: url("../fonts/Unbounded.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
+
+  @font-face {
+    font-family: "Muller"; 
+    src: url("../fonts/Muller.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) #ffffff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button, input, textarea {
+    border: none;
+    outline: none;
+    background: none;
+    font: inherit;
+}
+
+input, textarea {
+    resize: none;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #ffffff;
+}
+
+main {
+    position: relative;
+}
+
+.container-love-winter {
+    height: 750px;
+    background-image: url('/static/img/bg-catalog2.png');
+    background-repeat: no-repeat;
+    background-position: center; /* Центрирование изображения */
+    position: relative;
+}
+
+.navbar {
+    max-width: 1170px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+.nav-links {
+    font-size: 18px;
+    line-height: 17px;
+    color: #21333b;
+    font-family: "Muller";
+    margin-right: 35px;
+}
+
+.right-nav {
+    font-size: 23px;
+    line-height: 29px;
+    color: #66659e;
+    font-weight: 500;
+    font-family: "Muller";
+}
+
+.container {
+    display: flex;
+    align-items: center; /* Центрирование по вертикали */
+    justify-content: center; /* Центрирование по горизонтали */
+}
+
+.text-left {
+    writing-mode: vertical-rl; /* Поворачивает текст вертикально */
+    transform: rotate(180deg); /* Переворачивает текст, чтобы он шел сверху вниз */
+    margin-right: 50px; /* Отступ справа от текста до изображения */
+    font-size: 24px;
+    letter-spacing: 10px;
+    line-height: 30px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #111111;
+    font-family: "Unbounded";
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.image-center {
+    max-width: 100%; /* Ограничивает размер изображения */
+    height: auto; /* Сохраняет пропорции изображения */
+    margin-bottom: 20px; /* Поднимает изображение вверх */
+    transform: translateY(-20px); /* Поднимает изображение на 20px вверх */
+}
+
+.pages::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0%200%2024%2024" width="512" height="512"><path fill="%238a8a8a" d="M15.4,9.88,10.81,5.29a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42L14,11.29a1,1,0,0,1,0,1.42L9.4,17.29a1,1,0,0,0,1.41,1.42l4.59-4.59A3,3,0,0,0,15.4,9.88Z"/></svg>');
+    background-size: cover;
+    margin-right: 16px;
+    vertical-align: middle;
+}
+
+.main-page, .pages {
+    font-size: 12px;
+    letter-spacing: 2px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: #8a8a8a;
+    font-family: "Muller Regular";
+}
+
+.container-small {
+    max-width: 1100px !important;
+    margin: 0 auto;
+    position: relative;
+}
+
+.container-small h1 {
+    text-align: center;
+    font-size: 31px;
+    line-height: 39px;
+    text-transform: uppercase;
+    color: #111111;
+    font-weight: 700;
+    font-family: "Unbounded";
+    margin: 30px 0;
+}
+
+.cards-container {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: nowrap; /* Карточки в одну строку */
+    gap: 45px; /* Пространство между карточками */
+}
+
+.card {
+    width: 240px; /* Ширина карточки */
+
+    background-color: #fff; /* Белый фон */
+    overflow: hidden; /* Скрывает выходящие за границы элементы */
+    display: flex;
+    flex-direction: column; /* Выровнять элементы по вертикали */
+    transition: transform 0.3s ease; /* Эффект плавного перехода */
+}
+
+.card img:hover {
+    filter: brightness(80%); /* Затемняет карточку на 20% при наведении */
+}
+
+.card img {
+    aspect-ratio: 3 / 4;
+    width: 240px; /* Ширина карточки */
+    width: 100%; /* Изображение занимает всю ширину карточки */
+    height: auto; /* Высота изменяется пропорционально ширине */
+    object-fit: contain; /* Изображение масштабируется с сохранением пропорций */
+}
+
+
+.card-details {
+    padding: 5px;
+}
+
+.top-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.more-info {
+    font-size: 16px;
+    letter-spacing: 0px;
+    line-height: 16px;
+    text-decoration: underline;
+    color: #969696;
+    font-family: "Muller";
+}
+
+.colors {
+    font-size: 16px;
+    letter-spacing: 0px;
+    line-height: 16px;
+    color: #141414;
+    font-family: "Muller";
+}
+
+.card h3 {
+    margin: 10px 0; /* Отступы вокруг заголовка */
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 26px;
+    color: #000000;
+    font-family: "Muller";
+}
+
+.store-icons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px; /* Отступы между иконками */
+}
+
+.store-icons img {
+    width: 35px; /* Размер иконок */
+    height: auto; /* Сохраняем пропорции иконок */
+}
+
+/* Footer */
+footer {
+    background-color: #686b99;
+    height: 500px !important;
+    padding: 90px 0;
+    color: #e9e9e9;
+    margin-top: 120px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 3fr 3fr;
+    grid-template-rows: auto 1fr auto;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-logo {
+    grid-column: 1 / 2;
+    text-align: left;
+}
+
+.footer-logo img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.footer-info {
+    font-size: 17px;
+    line-height: 22px;
+    color: #ffffff;
+    font-weight: 300;
+    font-family: "Muller";
+}
+
+.footer-links {
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+}
+
+.footer-column p {
+    margin: 30px 0;
+    
+}
+
+.footer-title-p {
+    font-size: 17px;
+    line-height: 22px;
+    color: #ffffff;
+    font-weight: 500;
+    font-family: "Unbounded";
+    padding-bottom: 28px;
+
+}
+
+.footer-title {
+    font-size: 17px;
+    line-height: 22px;
+    color: #ffffff;
+    font-weight: 500;
+    font-family: "Unbounded";
+    padding-bottom: 28px;
+}
+
+.footer-links a {
+    font-size: 17px;
+    line-height: 22px;
+    color: #ffffff;
+    font-weight: 300;
+    font-family: "Muller";
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-address {
+    grid-column: 3 / 4;
+    font-size: 14px;
+    line-height: 1.3;
+    margin-top: 70px;
+    font-size: 17px;
+    line-height: 22px;
+    color: #ffffff;
+    font-weight: 300;
+    font-family: "Muller";
+    text-align: right;
+}
+
+.footer-address a.phone {
+    display: block;
+    margin-top: 40px;
+    font-size: 23px;
+    line-height: 29px;
+    color: #a0ff2b;
+    font-weight: 500;
+    font-family: "Muller";
+}
+
+.footer-address a.phone:hover {
+    text-decoration: underline;
+}
+
+.footer-policies {
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 50px;
+}
+
+.footer-policies a {
+    margin: 0 15px;
+    color: #e9e9e9;
+}
+
+.footer-policies a:hover {
+    text-decoration: underline;
+}
+
+footer p, a {
+    font-size: 18px;
+}
+
+.footer-address svg {
+    fill: #a0ff2b;
+    height: 20px;
+    aspect-ratio: 1;
+    margin-right: 8px; 
+}
+
+.footer-address .phone {
+    text-decoration: none; 
+    color: inherit; 
+}

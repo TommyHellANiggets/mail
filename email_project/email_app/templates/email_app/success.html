@@ -1,0 +1,13 @@
+{% extends 'email_app/base.html' %}
+
+{% block title %}Успех{% endblock %}
+
+{% block content %}
+    <div class="main-img">
+        <div class="box">
+            <h1>Спасибо за заявку!</h1>
+            <p style="margin-bottom: 100px;">Мы отправили письмо на вашу почту.</p>
+            <a href="{% url 'main' %}">На главную</a>
+        </div>
+    </div>
+{% endblock %}

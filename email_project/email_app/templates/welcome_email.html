@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добро пожаловать!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #007BFF;
+        }
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #666;
+            margin: 0 0 15px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .price-list {
+            margin-top: 30px;
+            border-top: 2px solid #007BFF;
+            padding-top: 20px;
+        }
+        .price-item {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+        .price-item:last-child {
+            border-bottom: none;
+        }
+        .price-item h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .price-item p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .price-item .price {
+            font-size: 18px;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Добро пожаловать, {{ subscriber.email }}!</h1>
+        <p>Благодарим вас за подписку на наши обновления! Мы рады приветствовать вас в нашем сообществе и обещаем держать вас в курсе самых интересных и полезных новостей.</p>
+        <p>Чтобы начать, мы хотели бы представить вам наш прайс-лист на основные услуги, которые мы предлагаем:</p>
+
+        <div class="price-list">
+            <h2>Прайс-лист на услуги</h2>
+
+            <div class="price-item">
+                <div>
+                    <h2>Консультирование по вопросам маркетинга</h2>
+                    <p>Персональная консультация по разработке маркетинговых стратегий и планов. Опытные специалисты помогут вам выстроить эффективную маркетинговую стратегию.</p>
+                </div>
+                <div class="price">5000 руб. за 1 час</div>
+            </div>
+
+            <div class="price-item">
+                <div>
+                    <h2>Создание веб-сайта</h2>
+                    <p>Полный цикл разработки веб-сайта: от дизайна до запуска. Включает адаптивный дизайн, SEO-оптимизацию и настройку хостинга. Мы создадим сайт, который будет эффективно представлять ваш бизнес онлайн.</p>
+                </div>
+                <div class="price">от 30 000 руб.</div>
+            </div>
+
+            <div class="price-item">
+                <div>
+                    <h2>Рекламная кампания в социальных сетях</h2>
+                    <p>Разработка и управление рекламными кампаниями в Facebook, Instagram и других платформах. Включает создание рекламных материалов и анализ эффективности, чтобы максимизировать вашу видимость и результаты.</p>
+                </div>
+                <div class="price">от 15 000 руб.</div>
+            </div>
+
+            <div class="price-item">
+                <div>
+                    <h2>Создание графического дизайна</h2>
+                    <p>Разработка уникальных графических материалов: логотипов, визиток, баннеров и других элементов. Мы поможем вам создать визуальный стиль, который выделит ваш бренд.</p>
+                </div>
+                <div class="price">от 7000 руб.</div>
+            </div>
+        </div>
+
+        <a href="#" class="button">Посмотреть все услуги</a>
+
+        <div class="footer">
+            <p>Если у вас возникли вопросы, не стесняйтесь связаться с нашей поддержкой. Мы всегда рады помочь!</p>
+            <p>С уважением,<br>Команда [Ваша Компания]</p>
+        </div>
+    </div>
+</body>
+</html>

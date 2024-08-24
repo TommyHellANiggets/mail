@@ -1,0 +1,156 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'email_app/item-page.css' %}">
+    <title>{{ product.name }}</title>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="left-nav">
+                <a href="" class="nav-links">О бренде</a>
+                <a href="catalog.html" class="nav-links" style="text-decoration: underline;">Каталог</a>
+                <a href="" class="nav-links">Оптовикам</a>
+            </div>
+            <div class="between-nav">
+                <img src="img/logo.png" alt="TOVO">
+            </div>
+            <div class="right-nav">
+                <p>+7 (900) 451-00-06</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container-small">
+            <!-- Хлебные крошки (breadcrumbs) -->
+            <div class="links">
+                <a href="{% url 'main' %}" class="main-page">главная</a>
+                <a href="{% url 'catalog' %}" class="pages">каталог</a>
+                <a href="" class="pages">{{ product.get_category_display }}</a>
+                <a href="" class="pages">{{ product.name }}</a>
+            </div>
+
+            <!-- Основной контент страницы -->
+            <div class="container-items">
+                <!-- Главное изображение продукта -->
+                <div class="product-image">
+                    {% if images %}
+                        <img src="{{ images.0.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                        <img src="default-image.png" alt="No image available">
+                    {% endif %}
+                </div>
+
+                <!-- Детали продукта -->
+                <div class="product-details">
+                    <div class="product-details-con">
+                        <div class="stars">
+                            <!-- Здесь вы можете отобразить рейтинг продукта, если он доступен -->
+                            <!-- Звезды могут быть статичными или динамическими, если рейтинг доступен -->
+                            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"><path d="M19.467,23.316,12,17.828,4.533,23.316,7.4,14.453-.063,9H9.151L12,.122,14.849,9h9.213L16.6,14.453Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"><path d="M19.467,23.316,12,17.828,4.533,23.316,7.4,14.453-.063,9H9.151L12,.122,14.849,9h9.213L16.6,14.453Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"><path d="M19.467,23.316,12,17.828,4.533,23.316,7.4,14.453-.063,9H9.151L12,.122,14.849,9h9.213L16.6,14.453Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"><path d="M19.467,23.316,12,17.828,4.533,23.316,7.4,14.453-.063,9H9.151L12,.122,14.849,9h9.213L16.6,14.453Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"><path d="M19.467,23.316,12,17.828,4.533,23.316,7.4,14.453-.063,9H9.151L12,.122,14.849,9h9.213L16.6,14.453Z"/></svg>
+                        </div>
+                        <h2>{{ product.name }}</h2>
+                        <div class="product-color">
+                            <p>Цвет: {{ product.colors.first.get_name_display }}</p>
+                            <div class="color-circle"></div>
+                        </div>
+                        <div class="product-size">
+                            <p>Размер:</p>
+                            <div class="sizes">
+                                {% for size in product.sizes.all %}
+                                    <span class="size">{{ size.get_name_display }}</span>
+                                {% endfor %}
+                            </div>
+                            <a href="" class="tab-size">Таблица размеров</a>
+                        </div>
+                        <div class="product-description">
+                            <h2>Характеристики:</h2>
+                            <p>{{ product.characteristics|linebreaks }}</p>
+                        </div>
+                        <div class="product-care">
+                            <h2>Уход за изделием:</h2>
+                            <p>{{ product.care_instructions|linebreaks }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Дополнительные изображения продукта -->
+            <div class="another-img">
+                {% for image in images %}
+                    {% if not forloop.first %} <!-- Пропускаем первое изображение, т.к. оно уже отображено как главное -->
+                        <img src="{{ image.image.url }}" alt="Фото товара {{ forloop.counter }}" class="more-img">
+                    {% endif %}
+                {% empty %}
+                    <p>No additional images available.</p>
+                {% endfor %}
+            </div>
+
+            <!-- Похожие товары -->
+            <div class="similar-products">
+                <h2>Похожие товары</h2>
+                <div class="cards-container">
+                    {% for similar_product in similar_products %}
+                        <div class="card">
+                            <img src="{{ similar_product.images.first.image.url }}" alt="{{ similar_product.name }}">
+                            <div class="card-details">
+                                <div class="top-info">
+                                    <a href="{% url 'product-detail' similar_product.pk %}" class="more-info">Подробнее...</a>
+                                    <span class="colors">+ {{ similar_product.colors.count }} цвета</span>
+                                </div>
+                                <h3>{{ similar_product.name }}</h3>
+                                <div class="store-icons">
+                                    <!-- Здесь можно добавить иконки магазинов, если такие есть -->
+                                    <a href="#"><img src="img/ozon.png" alt="Ozon"></a>
+                                    <a href="#"><img src="img/wb.png" alt="WB"></a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="img/logo-footer.png" alt="Logo">
+                <div class="footer-info">
+                    <p>ИП Михайлов<br>Илья Владимирович<br>318213000017900</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <p class="footer-title">Разделы</p>
+                    <p><a href="#">О бренде</a></p>
+                    <p><a href="#">Каталог</a></p>
+                </div>
+                <div class="footer-column">
+                    <p class="footer-title-p">&nbsp;</p>
+                    <p><a href="#">Оптовикам</a></p>
+                    <p><a href="#">Контакты</a></p>
+                </div>
+            </div>
+            <div class="footer-address">
+                <p>Адрес производства:<br>Чувашская Республика<br>г. Чебоксары, Эгерский бульвар 48</p>
+                <p class="footer-address">
+                    <a href="tel:+79004510006" class="phone">
+                        <span>+7 (900) 451-00-06</span>
+                    </a>
+                </p>
+            </div>
+            <div class="footer-policies">
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Пользовательское соглашение</a>
+                <a href="#">Согласие на обработку персональных данных</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
