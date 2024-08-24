@@ -10,20 +10,43 @@
 <body>
     <main>
         <div class="container-love-winter">
-            <div class="navbar">
-                <div class="left-nav">
-                    <a href="" class="nav-links">О бренде</a>
-                    <a href="catalog.html" class="nav-links" style="text-decoration: underline;">Каталог</a>
-                    <a href="" class="nav-links">Оптовикам</a>
+            <img src="{% static 'img/bg-catalog2.png' %}" alt="Задний фон" class="img-bg">
+            <div class="">
+                <div class="navbar">
+                    <div class="left-nav" id="leftNav">
+                        <a href="{% url 'main' %}" class="nav-links">О бренде</a>
+                        <a href="{% url 'catalog' %}" class="nav-links" style="text-decoration: underline;">Каталог</a>
+                        <a href="{% url 'opt' %}" class="nav-links">Оптовикам</a>
+                    </div>
+                    <div class="right-nav">
+                        <p>+7 (900) 451-00-06</p>
+                    </div>
+                    <div class="burger-menu" id="burgerMenu">
+                        <!-- Бургер-иконка -->
+                        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512">
+                            <path d="M0,3.5c0-.83,.67-1.5,1.5-1.5H17.5c.83,0,1.5,.67,1.5,1.5s-.67,1.5-1.5,1.5H1.5c-.83,0-1.5-.67-1.5-1.5Zm17.5,14.5H1.5c-.83,0-1.5,.67-1.5,1.5s.67,1.5,1.5,1.5H17.5c.83,0,1.5-.67,1.5-1.5s-.67-1.5-1.5-1.5Zm5-8H6.5c-.83,0-1.5,.67-1.5,1.5s.67,1.5,1.5,1.5H22.5c.83,0,1.5-.67,1.5-1.5s-.67-1.5-1.5-1.5Z"/>
+                        </svg>
+                    </div>
                 </div>
-                <div class="right-nav">
-                    <p>+7 (900) 451-00-06</p>
+                <!-- Боковое меню -->
+                <div class="side-menu" id="sideMenu">
+                    <div class="close-menu" id="closeMenu">
+                        <!-- Крестик для закрытия меню -->
+                        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512">
+                            <path d="M6.293,4.293a1,1,0,0,1,1.414,0L12,7.586,16.293,3.293a1,1,0,1,1,1.414,1.414L13.414,9,17.707,13.293a1,1,0,0,1-1.414,1.414L12,10.414,7.707,14.707a1,1,0,0,1-1.414-1.414L10.586,9,6.293,4.293Z"/>
+                        </svg>
+                    </div>
+                    <div class="side-menu-links">
+                        <a href="{% url 'main' %}" class="nav-links">О бренде</a>
+                        <a href="{% url 'catalog' %}" class="nav-links" style="text-decoration: underline;">Каталог</a>
+                        <a href="{% url 'opt' %}" class="nav-links">Оптовикам</a>
+                    </div>
                 </div>
-            </div>
-            <div class="container">
-                <div class="text-left">ПОДРОСТКИ</div>
-                <div class="image-container">
-                    <img src="{% static 'img/girl-tava.png' %}" class="image-center" alt="Girl">
+                <div class="container">
+                    <div class="text-left">ПОДРОСТКИ</div>
+                    <div class="image-container">
+                        <img src="{% static 'img/girl-tava.png' %}" class="image-center" alt="Girl">
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,147 +58,30 @@
             </div>
             <h1>коллекция</h1>
             <div class="cards-container">
-            {% for product in products %}
-            <div class="card">
-                <a href="{% url 'product-detail' product.pk %}">
-                    {% if product.images.first %}
-                        <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
-                    {% else %}
-                        <img src="{% static 'img/default.jpg' %}" alt="No image available">
-                    {% endif %}
-                </a>
-                <div class="card-details">
-                    <div class="top-info">
-                        <a href="{% url 'product-detail' product.pk %}">
-                            <span class="more-info">Подробнее...</span>
-                        </a>
-                        <span class="colors">+ {{ product.colors.count }} цвета</span>
-                    </div>
-                    <h3>{{ product.name }}</h3>
-                    <div class="store-icons">
-                        <a href="#"><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
-                        <a href="#"><img src="{% static 'img/wb.png' %}" alt="WB"></a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-
-            <div class="cards-container">
+                {% for product in products %}
                 <div class="card">
-                    <img src="{% static 'img/child (1).png' %}" alt="Product Image 1">
+                    <a href="{% url 'product-detail' product.pk %}">
+                        {% if product.images.first %}
+                            <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="{% static 'img/default.jpg' %}" alt="No image available">
+                        {% endif %}
+                    </a>
                     <div class="card-details">
                         <div class="top-info">
-                            <span class="more-info">Подробнее...</span>
-                            <span class="colors">+ 2 цвета</span>
+                            <a href="{% url 'product-detail' product.pk %}">
+                                <span class="more-info">Подробнее...</span>
+                            </a>
+                            <span class="colors">+ {{ product.colors.count }} цвета</span>
                         </div>
-                        <h3>Кофта флисовая на замке</h3>
+                        <h3>{{ product.name }}</h3>
                         <div class="store-icons">
-                            <a href=""><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
-                            <a href=""><img src="{% static 'img/wb.png' %}" alt="WB"></a>
+                            <a href="#"><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
+                            <a href="#"><img src="{% static 'img/wb.png' %}" alt="WB"></a>
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <img src="{% static 'img/child (2).png' %}" alt="Product Image 2">
-                    <div class="card-details">
-                        <div class="top-info">
-                            <span class="more-info">Подробнее...</span>
-                            <span class="colors">+ 2 цвета</span>
-                        </div>
-                        <h3>Кофта флисовая на замке</h3>
-                        <div class="store-icons">
-                            <a href=""><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
-                            <a href=""><img src="{% static 'img/wb.png' %}" alt="WB"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="{% static 'img/child (3).png' %}" alt="Product Image 3">
-                    <div class="card-details">
-                        <div class="top-info">
-                            <span class="more-info">Подробнее...</span>
-                            <span class="colors">+ 2 цвета</span>
-                        </div>
-                        <h3>Кофта флисовая на замке</h3>
-                        <div class="store-icons">
-                            <a href=""><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
-                            <a href=""><img src="{% static 'img/wb.png' %}" alt="WB"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="{% static 'img/child (4).png' %}" alt="Product Image 4">
-                    <div class="card-details">
-                        <div class="top-info">
-                            <span class="more-info">Подробнее...</span>
-                            <span class="colors">+ 2 цвета</span>
-                        </div>
-                        <h3>Кофта флисовая на замке</h3>
-                        <div class="store-icons">
-                            <a href=""><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
-                            <a href=""><img src="{% static 'img/wb.png' %}" alt="WB"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="cards-container">
-                <div class="card">
-                    <img src="{% static 'img/child (1).png' %}" alt="Product Image 1">
-                    <div class="card-details">
-                        <div class="top-info">
-                            <span class="more-info">Подробнее...</span>
-                            <span class="colors">+ 2 цвета</span>
-                        </div>
-                        <h3>Кофта флисовая на замке</h3>
-                        <div class="store-icons">
-                            <a href=""><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
-                            <a href=""><img src="{% static 'img/wb.png' %}" alt="WB"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="{% static 'img/child (2).png' %}" alt="Product Image 2">
-                    <div class="card-details">
-                        <div class="top-info">
-                            <span class="more-info">Подробнее...</span>
-                            <span class="colors">+ 2 цвета</span>
-                        </div>
-                        <h3>Кофта флисовая на замке</h3>
-                        <div class="store-icons">
-                            <a href=""><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
-                            <a href=""><img src="{% static 'img/wb.png' %}" alt="WB"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="{% static 'img/child (3).png' %}" alt="Product Image 3">
-                    <div class="card-details">
-                        <div class="top-info">
-                            <span class="more-info">Подробнее...</span>
-                            <span class="colors">+ 2 цвета</span>
-                        </div>
-                        <h3>Кофта флисовая на замке</h3>
-                        <div class="store-icons">
-                            <a href=""><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
-                            <a href=""><img src="{% static 'img/wb.png' %}" alt="WB"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="{% static 'img/child (4).png' %}" alt="Product Image 4">
-                    <div class="card-details">
-                        <div class="top-info">
-                            <span class="more-info">Подробнее...</span>
-                            <span class="colors">+ 2 цвета</span>
-                        </div>
-                        <h3>Кофта флисовая на замке</h3>
-                        <div class="store-icons">
-                            <a href=""><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
-                            <a href=""><img src="{% static 'img/wb.png' %}" alt="WB"></a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </main>
@@ -214,5 +120,21 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const burgerMenu = document.getElementById('burgerMenu');
+            const sideMenu = document.getElementById('sideMenu');
+            const closeMenu = document.getElementById('closeMenu');
+
+            burgerMenu.addEventListener('click', () => {
+                sideMenu.classList.add('menu-open');
+            });
+
+            closeMenu.addEventListener('click', () => {
+                sideMenu.classList.remove('menu-open');
+            });
+        });
+    </script>
 </body>
 </html>
