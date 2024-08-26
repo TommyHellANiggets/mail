@@ -36,11 +36,18 @@ def main(request):
     women_products = Product.objects.filter(category='women')[:6]
 
     context = {
-        'kids_products': kids_products,
-        'teens_products': teens_products,
-        'women_products': women_products,
+     'kids_products': kids_products,
+     'teens_products': teens_products,
+     'women_products': women_products,
     }
     return render(request, 'email_app/main.html', context)
+
+
+def kids(request):
+    return render(request, 'email_app/kids.html')
+
+def women(request):
+    return render(request, 'email_app/women.html')
 
 def catalog(request):
     return render(request, 'email_app/catalog.html')
@@ -57,14 +64,19 @@ def user_agreement(request):
 def personal_data(request):
     return render(request, 'email_app/personal_data.html')
 
-class ProductListView(ListView):
-    model = Product
-    template_name = 'product_list.html'
-    context_object_name = 'products'
+def list_kids(request):
+    products = Product.objects.filter(category='children')  # Фильтрация продуктов по категории
+    return render(request, 'email_app/list_kids.html', {'products': products})
 
-    def get_queryset(self):
-        queryset = Product.objects.filter(category__in=['teens', 'women', 'children', 'new_arrivals'])
-        return queryset
+def list_teenagers(request):
+    products = Product.objects.filter(category='teens')  # Фильтрация продуктов по категории
+    return render(request, 'email_app/teenagers.html', {'products': products})
+
+def list_adult(request):
+    products = Product.objects.filter(category='women')  # Фильтрация продуктов по категории
+    return render(request, 'email_app/list_women.html', {'products': products})
+
+
 
 
 from django.shortcuts import render, get_object_or_404

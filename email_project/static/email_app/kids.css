@@ -32,6 +32,12 @@
     scrollbar-color: var(--primary-color) #ffffff;
 }
 
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #686b99;
+}
+
 html {
     -ms-overflow-style: none;
 }
@@ -43,7 +49,6 @@ body {
     scrollbar-width: thin;
     scrollbar-color: var(--primary-color) #ffffff;
 }
-
 
 ul, ol {
     list-style: none;

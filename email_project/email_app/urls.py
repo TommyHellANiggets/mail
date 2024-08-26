@@ -3,8 +3,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from . import views
-from .views import ProductListView
-
 
 urlpatterns = [
     path('', views.main, name='main'),
@@ -15,7 +13,9 @@ urlpatterns = [
     path('privacy_policy/', views.privacy_policy, name='privacy_policy'),
     path('user_agreement/', views.user_agreement, name='user_agreement'),
     path('personal_data/', views.personal_data, name='personal_data'),
-    path('teenagers/', ProductListView.as_view(), name='product-list'),
+    path('teenagers/', views.list_teenagers, name='list-teenagers'),
+    path('kids/', views.list_kids, name='list-kids'),
+    path('adult/', views.list_adult, name='list-adult'),
     path('product/<int:id>/', views.product, name='product-detail'),]
 
 if settings.DEBUG:

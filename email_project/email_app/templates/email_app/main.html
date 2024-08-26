@@ -10,7 +10,7 @@
 <body>
     <header>
         <div class="navbar">
-            <div class="left-info">
+            <div class="left-nav">
                 <a href="{% url 'main' %}"><img src="{% static 'img/42.png' %}" alt="TAVA"></a>
                 <a href="{% url 'main' %}" style="text-decoration: underline;">О бренде</a>
                 <a href="{% url 'catalog' %}">Каталог</a>
@@ -18,96 +18,129 @@
                 <a href="{% url 'catalog' %}">Контакты</a>
             </div>
             <div class="right-info">+7 (900) 451-00-06</div>
+            <div class="burger-menu" id="burgerMenu">
+                <!-- Бургер-иконка -->
+                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512">
+                    <path d="M0,3.5c0-.83,.67-1.5,1.5-1.5H17.5c.83,0,1.5,.67,1.5,1.5s-.67,1.5-1.5,1.5H1.5c-.83,0-1.5-.67-1.5-1.5Zm17.5,14.5H1.5c-.83,0-1.5,.67-1.5,1.5s.67,1.5,1.5,1.5H17.5c.83,0,1.5-.67,1.5-1.5s-.67-1.5-1.5-1.5Zm5-8H6.5c-.83,0-1.5,.67-1.5,1.5s.67,1.5,1.5,1.5H22.5c.83,0,1.5-.67,1.5-1.5s-.67-1.5-1.5-1.5Z"/>
+                </svg>
+            </div>
+        </div>
+        <div class="side-menu" id="sideMenu">
+            <div class="div-side">
+                <a href="{% url 'main' %}"><img src="{% static 'img/logo.png' %}" alt="TAVA"></a>
+                <div class="close-menu" id="closeMenu">
+                    <!-- Крестик для закрытия меню -->
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512">
+                        <path d="M6.293,4.293a1,1,0,0,1,1.414,0L12,7.586,16.293,3.293a1,1,0,1,1,1.414,1.414L13.414,9,17.707,13.293a1,1,0,0,1-1.414,1.414L12,10.414,7.707,14.707a1,1,0,0,1-1.414-1.414L10.586,9,6.293,4.293Z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="side-menu-links">
+                <a href="{% url 'main' %}" style="text-decoration: underline;">О бренде</a>
+                <a href="{% url 'catalog' %}">Каталог</a>
+                <a href="{% url 'opt' %}">Оптовикам</a>
+                <a href="{% url 'catalog' %}">Контакты</a>
+            </div>
+        </div>
+        <div class="text-block-header">
+            <h1>Tava - теплая и качетсвенная одежда для самого долгого сезона.</h1>
+            <p>Вы не начнете любить холод, но перестанете его замечать в теплой флисовой одежде TAVA</p>
         </div>
     </header>
     <main>
-<h1>коллекция<br>тава кидс</h1>
-<div class="container">
-    {% for product in kids_products %}
-        <div class="card">
-            <a href="{% url 'product-detail' product.pk %}">
-                {% if product.images.first %}
-                    <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
-                {% else %}
-                    <img src="{% static 'img/no_photo.png' %}" alt="No image available">
-                {% endif %}
-            </a>
-            <div class="more">
-                <a href="" style="text-decoration: underline;">Подробнее...</a>
-                <span>Рост 128-170</span>
-            </div>
-            <h2>{{ product.name }}</h2>
-        </div>
-    {% empty %}
-        <p>Нет доступных товаров в категории "Дети".</p>
-    {% endfor %}
-</div>
-<button type="button" class="all-collections">
-    <span>все коллекции</span>
-</button>
+        <div class="tava-collection">
+            <h1>коллекция<br>тава кидс</h1>
+                <div class="container">
+                    {% for product in kids_products %}
+                        <div class="card">
+                            <a href="{% url 'product-detail' product.pk %}">
+                                {% if product.images.first %}
+                                    <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+                                {% else %}
+                                    <img src="{% static 'img/no_photo.png' %}" alt="No image available">
+                                {% endif %}
+                            </a>
+                            <div class="more">
+                                <a href="{% url 'product-detail' product.pk %}" style="text-decoration: underline;">Подробнее...</a>
+                                <span>Рост 128-170</span>
+                            </div>
+                            <h2>{{ product.name }}</h2>
+                        </div>
+                    {% empty %}
+                        <p>Нет доступных товаров в категории "Дети".</p>
+                    {% endfor %}
+                </div>
+                <a href="{% url 'list-kids'  %}" class="all-collections">
+                    <span>все коллекции</span>
+                </a>
 
-<h1>коллекция<br>тава подростки</h1>
-<div class="container">
-    {% for product in teens_products %}
-        <div class="card">
-            <a href="{% url 'product-detail' product.pk %}">
-                {% if product.images.first %}
-                    <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
-                {% else %}
-                    <img src="{% static 'img/no_photo.png' %}" alt="No image available">
-                {% endif %}
-            </a>
-            <div class="more">
-                <a href="" style="text-decoration: underline;">Подробнее...</a>
-                <span>Рост 128-170</span>
-            </div>
-            <h2>{{ product.name }}</h2>
-        </div>
-    {% empty %}
-        <p>Нет доступных товаров в категории "Подростки".</p>
-    {% endfor %}
-</div>
-<button type="button" class="all-collections">
-    <span>все коллекции</span>
-</button>
+                <h1>коллекция<br>тава подростки</h1>
+                <div class="container">
+                    {% for product in teens_products %}
+                        <div class="card">
+                            <a href="{% url 'product-detail' product.pk %}">
+                                {% if product.images.first %}
+                                    <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+                                {% else %}
+                                    <img src="{% static 'img/no_photo.png' %}" alt="No image available">
+                                {% endif %}
+                            </a>
+                            <div class="more">
+                                <a href="{% url 'product-detail' product.pk %}" style="text-decoration: underline;">Подробнее...</a>
+                                <span>Рост 128-170</span>
+                            </div>
+                            <h2>{{ product.name }}</h2>
+                        </div>
+                    {% empty %}
+                        <p>Нет доступных товаров в категории "Подростки".</p>
+                    {% endfor %}
+                </div>
+                <a href="{% url 'list-teenagers' %}" class="all-collections">
+                    <span>все коллекции</span>
+                </a>
 
-<h1>коллекция<br>тава женщины</h1>
-<div class="container">
-    {% for product in women_products %}
-        <div class="card">
-            <a href="{% url 'product-detail' product.pk %}">
-                {% if product.images.first %}
-                    <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
-                {% else %}
-                    <img src="{% static 'img/no_photo.png' %}" alt="No image available">
-                {% endif %}
-            </a>
-            <div class="more">
-                <a href="" style="text-decoration: underline;">Подробнее...</a>
-                <span>Рост 128-170</span>
-            </div>
-            <h2>{{ product.name }}</h2>
-        </div>
-    {% empty %}
-        <p>Нет доступных товаров в категории "Женщины".</p>
-    {% endfor %}
-</div>
-<button type="button" class="all-collections">
-    <span>все коллекции</span>
-</button>
 
+
+                <h1>коллекция<br>тава взрослые</h1>
+                <div class="container-main">
+                    <div class="container">
+                        {% for product in women_products %}
+                            <div class="card">
+                                <a href="{% url 'product-detail' product.pk %}">
+                                    {% if product.images.first %}
+                                        <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+                                    {% else %}
+                                        <img src="{% static 'img/no_photo.png' %}" alt="No image available">
+                                    {% endif %}
+                                </a>
+                                <div class="more">
+                                    <a href="{% url 'product-detail' product.pk %}" style="text-decoration: underline;">Подробнее...</a>
+                                    <span>Рост 128-170</span>
+                                </div>
+                                <h2>{{ product.name }}</h2>
+                            </div>
+                        {% empty %}
+                            <p>Нет доступных товаров в категории "Женщины".</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <a href="{% url 'list-adult'  %}" class="all-collections">
+                    <span>все коллекции</span>
+                </a>
+        </div>
         <div class="container-info">
             <div class="container-info-content">
                 <div class="text-info">
                     <img src="{% static 'img/element (1).png' %}" alt="">
                     <h3>ГИПО-АЛЛЕРГЕННОСТЬ</h3>
-                    <p>Материал полностью 
-                        гипоаллергенен, поэтому 
-                        подходит всем – малышам 
+                    <p>Материал полностью
+                        гипоаллергенен, поэтому
+                        подходит всем – малышам
                         и взрослым.
-                        воздухопроницаемостью, 
-                        влагоотталкивающими 
-                        свойствами и отлично 
+                        воздухопроницаемостью,
+                        влагоотталкивающими
+                        свойствами и отлично
                         сохраняют тепло.
                     </p>
                 </div>
@@ -115,11 +148,11 @@
                     <img src="{% static 'img/element (2).png' %}" alt="">
                     <h3>АНТИ-
                         БАКТЕРИАЛЬНОСТЬ</h3>
-                    <p>Флис является максимально 
-                        неблагоприятной средой 
-                        для размножения пылевых 
-                        клещей, грибка, плесени 
-                        и других микроорганизмов. 
+                    <p>Флис является максимально
+                        неблагоприятной средой
+                        для размножения пылевых
+                        клещей, грибка, плесени
+                        и других микроорганизмов.
                         В нем не заводится моль.
                     </p>
                 </div>
@@ -127,9 +160,9 @@
                     <img src="{% static 'img/element (3).png' %}" alt="">
                     <h3>ВОЗДУХО-
                         ПРОНИЦАЕМОСТЬ</h3>
-                    <p>Структура ткани 
-                        со множеством воздушных 
-                        карманов, позволяет коже 
+                    <p>Структура ткани
+                        со множеством воздушных
+                        карманов, позволяет коже
                         дышать.
                     </p>
                 </div>
@@ -137,19 +170,19 @@
                     <img src="{% static 'img/element (4).png' %}" alt="">
                     <h3>ИЗНОСО-
                         СТОЙКОСТЬ</h3>
-                    <p>При соблюдении правил 
-                        ухода флис способен 
-                        служить долго, не теряя 
+                    <p>При соблюдении правил
+                        ухода флис способен
+                        служить долго, не теряя
                         своих свойств.
                     </p>
                 </div>
                 <div class="text-info">
                     <img src="{% static 'img/element (5).png' %}" alt="">
                     <h3>ЭЛАСТИЧНОСТЬ</h3>
-                    <p>Одежда из флиса не сковывает 
-                        движения, при этом, хорошо 
-                        облегает и сохраняет форму. 
-                        Не дает усадку и 
+                    <p>Одежда из флиса не сковывает
+                        движения, при этом, хорошо
+                        облегает и сохраняет форму.
+                        Не дает усадку и
                         не растягивается.
                     </p>
                 </div>
@@ -157,10 +190,10 @@
                     <img src="{% static 'img/element (6).png' %}" alt="">
                     <h3>ТЕРМО-
                         РЕГУЛЯЦИЯ</h3>
-                    <p>Способность поддерживать 
-                        комфортную для тела 
-                        температуру, во флисовых 
-                        изделиях невозможно 
+                    <p>Способность поддерживать
+                        комфортную для тела
+                        температуру, во флисовых
+                        изделиях невозможно
                         вспотеть или замерзнуть.
                     </p>
                 </div>
@@ -170,10 +203,10 @@
             <img src="{% static 'img/girl.png' %}" alt="девочка">
             <div class="text-block">
                 <h2>вы <br> полюбите <br> зиму!</h2>
-                <p>Холодная погода 
-                    ещё не повод 
-                    оставаться дома. 
-                    Если Вы в одежде TAVA.</p>
+                <h5 class="text-p">Холодная погода
+                    ещё не повод
+                    оставаться дома.
+                    Если Вы в одежде TAVA.</h5>
             </div>
         </div>
     </main>
@@ -192,7 +225,7 @@
                     <p><a href="#">Каталог</a></p>
                 </div>
                 <div class="footer-column">
-                    <p class="footer-title-p">&nbsp;</p> 
+                    <p class="footer-title-p">&nbsp;</p>
                     <p><a href="#">Оптовикам</a></p>
                     <p><a href="#">Контакты</a></p>
                 </div>
@@ -212,5 +245,7 @@
             </div>
         </div>
     </footer>
+    <script src="{% static 'email_app/side.js' %}"></script>
+
 </body>
 </html>

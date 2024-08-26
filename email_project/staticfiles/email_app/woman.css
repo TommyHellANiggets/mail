@@ -1,13 +1,3 @@
-:root {
-    /* Global CSS variables */
-    --primary-color: #686b99;
-    --text-color: #2c2c2c;
-    --text-color-light: #e9e9e9;
-    --highlight-color: #a6ff6b;
-    --navbar-width: 90%;
-    --max-width: 1300px; /* Updated max-width */
-}
-
 /* Подключение шрифтов */
 @font-face {
     font-family: "Unbounded";
@@ -32,18 +22,12 @@
     scrollbar-color: var(--primary-color) #ffffff;
 }
 
-html {
-    -ms-overflow-style: none;
-}
-
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     color: var(--text-color);
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) #ffffff;
 }
-
 
 ul, ol {
     list-style: none;
@@ -214,8 +198,8 @@ input, textarea {
 .card img {
     aspect-ratio: 3 / 4;
     width: 100%; /* Изображение занимает всю ширину карточки */
-    height: 100%; /* Высота изменяется пропорционально ширине */
-    object-fit: cover; /* Изображение масштабируется с сохранением пропорций */
+    height: auto; /* Высота изменяется пропорционально ширине */
+    object-fit: contain; /* Изображение масштабируется с сохранением пропорций */
 }
 
 .card a:hover {

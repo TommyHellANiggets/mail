@@ -80,7 +80,7 @@ class Subscriber(models.Model):
     full_name = models.CharField(max_length=255, verbose_name="Полное имя")
     company_name = models.CharField(max_length=255, verbose_name="Название компании", blank=True, null=True)
     phone_number = models.CharField(max_length=15, verbose_name="Телефон", blank=True, null=True)
-    email = models.EmailField(unique=True, verbose_name="Email")
+    email = models.EmailField(unique=False, verbose_name="Email")
     date_subscribed = models.DateTimeField(auto_now_add=True, verbose_name="Дата подписки")
 
     def __str__(self):

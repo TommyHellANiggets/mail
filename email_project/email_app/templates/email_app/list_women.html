@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'email_app/teenagers.css' %}">
+    <link rel="stylesheet" href="{% static 'email_app/woman.css' %}">
     <title>Document</title>
 </head>
 <body>
@@ -47,20 +47,20 @@
                     </div>
                 </div>
                 <div class="container">
-                    <div class="text-left">ПОДРОСТКИ</div>
+                    <div class="text-left">взрослые</div>
                     <div class="image-container">
-                        <img src="{% static 'img/girl-tava.png' %}" class="image-center" alt="Girl">
+                        <img src="{% static 'img/adult.png' %}" class="image-center" alt="adult">
                     </div>
                 </div>
             </div>
         </div>
         <div class="container-small">
+            <h1>коллекция</h1>
             <div class="links">
                 <a href="{% url 'main' %}" class="main-page">главная</a>
                 <a href="{% url 'catalog' %}" class="pages">каталог</a>
-                <a href="" class="pages">ПОДРОСТКИ</a>
+                <a href="" class="pages">Взрослые</a>
             </div>
-            <h1>коллекция</h1>
             <div class="cards-container">
                 {% for product in products %}
                 <div class="card">

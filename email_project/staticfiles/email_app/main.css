@@ -95,7 +95,7 @@ header {
     z-index: 2;
 }
 
-.left-info {
+.left-nav {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -132,6 +132,14 @@ header {
     font-family: "Muller";
 }
 
+.tava-collection {
+    margin: 0 20px;
+}
+
+.tava-collection h1 {
+    text-align: center;
+}
+
 main h1{
     margin: 40px 0 30px 0;
     font-size: 26px;
@@ -144,19 +152,25 @@ main h1{
     text-align: center;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
 .more {
     display: flex;
     justify-content: space-between;
 }
 
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Позволяет карточкам переноситься на новую строку */
+    gap: 20px; /* Отступы между карточками */
+    justify-content: center; /* Выравнивание карточек по левому краю */
+    max-width: 1540px; /* Устанавливает максимальную ширину контейнера */
+    width: 100%; /* Контейнер занимает всю доступную ширину */
+    margin: 0 auto; /* Центрирование контейнера */
+}
+
+
 .card {
-    width: 240px; /* Или ширина по вашему выбору */
+    flex: 1 1 240px; /* Гибкий размер карточки: занимает минимум 240px */
+    max-width: 240px; /* Максимальная ширина карточки */
     background-color: #fff;
     overflow: hidden;
     display: flex;
@@ -164,20 +178,24 @@ main h1{
     transition: transform 0.3s ease;
 }
 
-.card a {
-    display: block; /* Убедитесь, что ссылка занимает всю ширину карточки */
-}
-
 .card img {
-    display: block; /* Убирает пробел под изображением */
-    max-width: 100%; /* Устанавливает максимальную ширину изображения равной ширине контейнера */
-    height: auto; /* Сохраняет пропорции изображения */
+    max-width: 240px;
+    aspect-ratio: 240/340;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+@media (max-width: 520px) {
+    .card {
+        flex: 1 1 45%; /* Изменение размера карточек при уменьшении экрана */
+        max-width: 45%; /* Максимальная ширина карточки при уменьшении экрана */
+    }
 }
 
 
-
-.card img:hover {
-    filter: brightness(80%); /* Затемняет карточку на 20% при наведении */
+.card span {
+    text-align: end;
 }
 
 .all-collections {
@@ -187,13 +205,15 @@ main h1{
     color: #585858;
     border: 3.8px solid #a0ff2b;
     background: transparent;
-    display: block;
+    display: flex; /* Используйте flexbox */
+    align-items: center; /* Вертикальное выравнивание по центру */
+    justify-content: center; /* Горизонтальное выравнивание по центру */
     margin: 0 auto;
     margin-top: 50px;
     margin-bottom: 50px;
 }
 
-.all-collections span{
+.all-collections span {
     font-size: 15px;
     letter-spacing: 0px;
     line-height: 18px;
@@ -204,6 +224,7 @@ main h1{
     text-align: center;
     cursor: pointer;
 }
+
 
 .all-collections:hover {
     background-color: #a0ff2b31;;
@@ -226,13 +247,12 @@ main h1{
     margin: 10px 0;
 }
 
-.more span {
-    text-align: end !important;
-}
-
 .container-info {
     min-height: 1078px;
     background-color: #686b99;
+    display: flex;
+    justify-content: center;
+
 }
 
 .container-info-content {
@@ -240,9 +260,10 @@ main h1{
     display: flex;
     flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
     gap: 60px; /* Расстояние между элементами */
-    margin: 0 auto;
     align-items: center;
-    padding-top: 70px;
+    padding: 70px 0;
+    justify-content: center;
+
 }
 
 .text-info {
@@ -298,7 +319,7 @@ main h1{
     margin-top: 160px;
 }
 
-.text-block p {
+.text-p {
     font-size: 31px;
     line-height: 31px;
     color: #2f2f2f;
@@ -307,18 +328,22 @@ main h1{
     text-align: center;
 }
 
-/* Footer */
+.text-block-header {
+    display: none;
+    position: relative;
+}
+
 footer {
     background-color: #686b99;
-    height: 500px !important;
+    height: auto;
     padding: 90px 0;
     color: #e9e9e9;
 }
 
 .footer-container {
     display: grid;
-    grid-template-columns: 2fr 3fr 3fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
     align-items: start;
     max-width: 1200px;
     margin: 0 auto;
@@ -354,19 +379,9 @@ footer {
 
 .footer-column p {
     margin: 30px 0;
-    
 }
 
-.footer-title-p {
-    font-size: 17px;
-    line-height: 22px;
-    color: #ffffff;
-    font-weight: 500;
-    font-family: "Unbounded";
-    padding-bottom: 28px;
-
-}
-
+.footer-title-p,
 .footer-title {
     font-size: 17px;
     line-height: 22px;
@@ -390,15 +405,13 @@ footer {
 
 .footer-address {
     grid-column: 3 / 4;
-    font-size: 14px;
-    line-height: 1.3;
-    margin-top: 70px;
     font-size: 17px;
     line-height: 22px;
     color: #ffffff;
     font-weight: 300;
     font-family: "Muller";
     text-align: right;
+    margin-top: 70px;
 }
 
 .footer-address a.phone {
@@ -421,6 +434,7 @@ footer {
     text-align: center;
     font-size: 12px;
     margin-top: 50px;
+    font-family: "Muller";
 }
 
 .footer-policies a {
@@ -440,10 +454,219 @@ footer p, a {
     fill: #a0ff2b;
     height: 20px;
     aspect-ratio: 1;
-    margin-right: 8px; 
+    margin-right: 8px;
 }
 
 .footer-address .phone {
-    text-decoration: none; 
-    color: inherit; 
+    text-decoration: none;
+    color: inherit;
+}
+
+@media (max-width: 1116px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-logo,
+    .footer-links,
+    .footer-address {
+        grid-column: 1 / 2;
+        text-align: center;
+    }
+
+    .footer-address {
+        margin-top: 20px;
+    }
+
+    .footer-policies {
+        margin-top: 20px;
+    }
+
+    .footer-logo img {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 0 20px;
+    }
+
+    .footer-address {
+        margin-top: 10px;
+    }
+
+    .footer-policies a {
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-container {
+        padding: 0 10px;
+    }
+
+    .footer-policies {
+        font-size: 10px;
+    }
+}
+
+/* Скрываем боковое меню по умолчанию */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+    padding-top: 20px;
+}
+
+/* Показываем боковое меню */
+.side-menu.menu-open {
+    left: 0;
+}
+
+/* Стили для крестика закрытия */
+.close-menu {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.burger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.burger-menu svg, .close-menu svg {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 420px) {
+    .text-block-header h1, .text-block-header p {
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 755px) {
+    .left-nav, .between-nav {
+        display: none;
+    }
+
+    .div-side {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        margin-bottom: 40px;
+        margin-top: -20px;
+    }
+
+    .div-side img {
+        height: 30px;
+    }
+
+    .nav-links {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .burger-menu {
+        display: block;
+        width: 40px; /* Убедитесь, что контейнер имеет достаточную ширину */
+        height: 40px; /* Убедитесь, что контейнер имеет достаточную высоту */
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .side-menu-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .side-menu-links a {
+        font-size: 24px;
+        text-decoration: none;
+        color: black;
+    }
+
+    .navbar {
+        padding: 20px 15px;
+        display: flex;
+        align-items: center; /* добавлено для центрирования элементов */
+    }
+}
+
+
+
+@media (max-width: 1180px) {
+    .container-love-winter img {
+        display: none;
+    }
+
+    .container-love-winter h2 {
+        font-size: clamp(40px, 5vw + 1rem, 68px);
+        line-height: clamp(40px, 4vw + 1rem, 69px);
+    }
+
+    .text-p {
+        font-size: clamp(18px, 5vw + 1rem, 31px);
+        line-height: clamp(18px, 4vw + 1rem, 31px);
+    }
+
+    header {
+        height: 730px;
+        background-image: url('/static/img/about2.png') !important;
+        background-size: cover;
+        position: relative;
+    }
+
+    .text-block-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 90%;
+        text-align: start;
+        padding: 0 20px;
+    }
+
+    .text-block-header h1 {
+        font-size: clamp(16px, 2vw + 1rem, 40px); /* Минимальный размер 24px, максимальный 40px */
+        line-height: clamp(30px, 2vw + 1rem, 40px);
+        letter-spacing: 0px;
+        text-transform: uppercase;
+        color: #171717;
+        font-weight: 900;
+        font-family: "Unbounded";
+        max-width: 480px;
+        margin-bottom: 30px;
+    }
+
+    .text-block-header p {
+        font-size: clamp(8px, 0,5vw + 1rem, 20px); /* Минимальный размер 14px, максимальный 20px */
+        line-height: clamp(8px, 1vw + 1rem, 30px);
+        letter-spacing: 0px;
+        text-transform: uppercase;
+        color: #171717;
+        font-weight: 400;
+        font-family: "Unbounded";
+        max-width: 480px;
+    }
+
+    main, footer {
+        position: relative;
+        top: -130px;
+    }
 }
