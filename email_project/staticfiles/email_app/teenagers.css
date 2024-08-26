@@ -1,17 +1,19 @@
+/* Подключение шрифтов */
 @font-face {
-    font-family: "Unbounded"; 
-    src: url("../fonts/Unbounded.ttf") format("truetype"); 
-    font-style: normal; 
-    font-weight: normal; 
-} 
+    font-family: "Unbounded";
+    src: url("../fonts/Unbounded.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
 
-  @font-face {
-    font-family: "Muller"; 
-    src: url("../fonts/Muller.ttf") format("truetype"); 
-    font-style: normal; 
-    font-weight: normal; 
-} 
+@font-face {
+    font-family: "Muller";
+    src: url("../fonts/Muller.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
 
+/* Основные стили */
 * {
     margin: 0;
     padding: 0;
@@ -58,23 +60,30 @@ input, textarea {
     background-color: #ffffff;
 }
 
-main {
-    position: relative;
-}
-
+/* Контейнер для главной страницы */
 .container-love-winter {
-    height: 750px;
-    background-image: url('/static/img/bg-catalog2.png');
-    background-repeat: no-repeat;
-    background-position: center; /* Центрирование изображения */
+    height: clamp(750px, 450px) !important; /* Плавное изменение высоты */
     position: relative;
+    overflow: hidden; /* Прячем переполнение */
 }
 
+.img-bg {
+    position: absolute; /* Абсолютное позиционирование внутри родительского контейнера */
+    top: 0; /* Позиционируем от верхнего края родителя */
+    left: 0; /* Позиционируем от левого края родителя */
+    height: auto; /* Плавное изменение высоты от 350px до 750px */
+    background-size: cover; /* Покрытие всего элемента фоном */
+    z-index: -1; /* Поставить фон ниже остальных элементов, если необходимо */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translate(-50%); /* Смещение элемента на половину его размера для точного центрирования */
+}
+/* Навигационная панель */
 .navbar {
     max-width: 1170px;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
+    padding: 0 20px;
     padding-top: 50px;
 }
 
@@ -86,6 +95,10 @@ main {
     margin-right: 35px;
 }
 
+.links {
+    margin: 0 15px;
+}
+
 .right-nav {
     font-size: 23px;
     line-height: 29px;
@@ -94,6 +107,7 @@ main {
     font-family: "Muller";
 }
 
+/* Основной контейнер */
 .container {
     display: flex;
     align-items: center; /* Центрирование по вертикали */
@@ -116,7 +130,6 @@ main {
 .image-container {
     display: flex;
     justify-content: center;
-    
 }
 
 .image-center {
@@ -124,6 +137,7 @@ main {
     height: auto; /* Сохраняет пропорции изображения */
     margin-bottom: 20px; /* Поднимает изображение вверх */
     transform: translateY(-20px); /* Поднимает изображение на 20px вверх */
+    padding: 0 20px;
 }
 
 .pages::before {
@@ -163,16 +177,17 @@ main {
     margin: 30px 0;
 }
 
+/* Стили карточек */
 .cards-container {
+    margin: 0 15px;
     margin-top: 40px;
     display: flex;
-    flex-wrap: nowrap; /* Карточки в одну строку */
-    gap: 45px; /* Пространство между карточками */
+    flex-wrap: wrap; /* Позволяет карточкам переноситься на новую строку */
+    gap: 60px; /* Пространство между карточками */
 }
 
 .card {
-    width: 240px; /* Ширина карточки */
-
+    width: calc(25% - 45px); /* Ширина карточки с учетом отступов для 3 карточек в строке */
     background-color: #fff; /* Белый фон */
     overflow: hidden; /* Скрывает выходящие за границы элементы */
     display: flex;
@@ -180,18 +195,16 @@ main {
     transition: transform 0.3s ease; /* Эффект плавного перехода */
 }
 
-.card img:hover {
-    filter: brightness(80%); /* Затемняет карточку на 20% при наведении */
-}
-
 .card img {
     aspect-ratio: 3 / 4;
-    width: 240px; /* Ширина карточки */
     width: 100%; /* Изображение занимает всю ширину карточки */
     height: auto; /* Высота изменяется пропорционально ширине */
     object-fit: contain; /* Изображение масштабируется с сохранением пропорций */
 }
 
+.card a:hover {
+    filter: brightness(80%); /* Затемняет карточку на 20% при наведении */
+}
 
 .card-details {
     padding: 5px;
@@ -243,19 +256,18 @@ main {
     height: auto; /* Сохраняем пропорции иконок */
 }
 
-/* Footer */
 footer {
     background-color: #686b99;
-    height: 500px !important;
+    height: auto;
     padding: 90px 0;
     color: #e9e9e9;
-    margin-top: 120px;
+    margin-top: 100px
 }
 
 .footer-container {
     display: grid;
-    grid-template-columns: 2fr 3fr 3fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
     align-items: start;
     max-width: 1200px;
     margin: 0 auto;
@@ -291,19 +303,9 @@ footer {
 
 .footer-column p {
     margin: 30px 0;
-    
 }
 
-.footer-title-p {
-    font-size: 17px;
-    line-height: 22px;
-    color: #ffffff;
-    font-weight: 500;
-    font-family: "Unbounded";
-    padding-bottom: 28px;
-
-}
-
+.footer-title-p,
 .footer-title {
     font-size: 17px;
     line-height: 22px;
@@ -327,15 +329,13 @@ footer {
 
 .footer-address {
     grid-column: 3 / 4;
-    font-size: 14px;
-    line-height: 1.3;
-    margin-top: 70px;
     font-size: 17px;
     line-height: 22px;
     color: #ffffff;
     font-weight: 300;
     font-family: "Muller";
     text-align: right;
+    margin-top: 70px;
 }
 
 .footer-address a.phone {
@@ -358,6 +358,7 @@ footer {
     text-align: center;
     font-size: 12px;
     margin-top: 50px;
+    font-family: "Muller";
 }
 
 .footer-policies a {
@@ -377,10 +378,190 @@ footer p, a {
     fill: #a0ff2b;
     height: 20px;
     aspect-ratio: 1;
-    margin-right: 8px; 
+    margin-right: 8px;
 }
 
 .footer-address .phone {
-    text-decoration: none; 
-    color: inherit; 
+    text-decoration: none;
+    color: inherit;
 }
+
+@media (max-width: 1116px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-logo,
+    .footer-links,
+    .footer-address {
+        grid-column: 1 / 2;
+        text-align: center;
+    }
+
+    .footer-address {
+        margin-top: 20px;
+    }
+
+    .footer-policies {
+        margin-top: 20px;
+    }
+
+    .footer-logo img {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 0 20px;
+    }
+
+    .footer-address {
+        margin-top: 10px;
+    }
+
+    .footer-policies a {
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-container {
+        padding: 0 10px;
+    }
+
+    .footer-policies {
+        font-size: 10px;
+    }
+}
+
+
+/* На устройствах с шириной экрана до 992px (например, планшеты) */
+@media (max-width: 992px) {
+    .card {
+        width: calc(33% - 15px); /* Три карточки в строке */
+
+    }
+
+    .cards-container {
+        gap: 25px;
+    }
+}
+
+@media (max-width: 620px) {
+    .top-info {
+        flex-direction: column;
+        text-wrap: nowrap;
+    }
+
+    .text-left {
+        display: none;
+    }
+}
+
+/* На устройствах с шириной экрана до 576px (например, маленькие мобильные телефоны) */
+@media (max-width: 576px) {
+    .card-details h3 {
+        font-size: 20px;
+    }
+
+    .cards-container {
+        gap: 10px;
+    }
+
+    .card {
+        width: calc(50% - 5px); /* Две карточки в строке */
+    }
+}
+
+/* Скрываем боковое меню по умолчанию */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+    padding-top: 20px;
+}
+
+/* Показываем боковое меню */
+.side-menu.menu-open {
+    left: 0;
+}
+
+/* Стили для крестика закрытия */
+.close-menu {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.burger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.burger-menu svg, .close-menu svg {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 720px) {
+    .left-nav, .between-nav {
+        display: none;
+    }
+
+    .div-side {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        margin-bottom: 40px;
+        margin-top: -20px;
+    }
+
+    .div-side img {
+        height: 30px;
+    }
+
+    .nav-links {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .burger-menu {
+        display: block;
+        width: 40px; /* Убедитесь, что контейнер имеет достаточную ширину */
+        height: 40px; /* Убедитесь, что контейнер имеет достаточную высоту */
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .side-menu-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .side-menu-links a {
+        font-size: 24px;
+        text-decoration: none;
+        color: black;
+    }
+
+    .navbar {
+        padding: 20px 15px;
+        display: flex;
+        align-items: center; /* добавлено для центрирования элементов */
+    }
+}
+

@@ -3,14 +3,14 @@
     src: url("../fonts/Unbounded.ttf") format("truetype"); 
     font-style: normal; 
     font-weight: normal; 
-} 
+}
 
   @font-face {
-    font-family: "Muller"; 
-    src: url("../fonts/Muller.ttf") format("truetype"); 
-    font-style: normal; 
-    font-weight: normal; 
-} 
+    font-family: "Muller";
+    src: url("../fonts/Muller.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
 
 * {
     margin: 0;
@@ -73,6 +73,7 @@ html {
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
+    padding: 0 20px;
     padding-top: 50px;
 }
 
@@ -116,7 +117,7 @@ html {
     max-width: 1126px !important;
     margin: 0 auto;
     position: relative;
-    padding: 100px 0;
+    padding: 100px 20px;
 }
 
 .container-items {
@@ -333,10 +334,12 @@ button {
 .another-img {
     margin-top: 30px;
     margin-bottom: 160px;
+    display: flex;
+    gap: 13px;
+    flex-wrap: wrap;
 }
 
 .more-img {
-    margin-right: 13px;
     height: 185px;
     width: 140px;
     object-fit: cover; /* Обрезка изображения по бокам */
@@ -346,8 +349,8 @@ button {
 .cards-container {
     margin-top: 40px;
     display: flex;
-    justify-content: space-between; /* Пространство между карточками */
-    flex-wrap: nowrap; /* Карточки в одну строку */
+    justify-content: start; /* Пространство между карточками */
+    flex-wrap: wrap;
     gap: 45px; /* Пространство между карточками */
 }
 
@@ -361,14 +364,43 @@ button {
 }
 
 .card:hover {
-    transform: translateY(-10px); /* Легкий подъем карточки при наведении */
+    transform: translateY(-10px); /* Slight lift effect on hover */
 }
+.product-color {
+    margin-bottom: 20px; /* Adjust spacing as needed */
+}
+
+.color-names {
+    display: inline; /* Keeps the color names in line with the label */
+}
+
+.color-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between color circles */
+    margin-top: 10px; /* Space between the color names and circles */
+}
+
+.color-item {
+    display: flex;
+    align-items: center;
+}
+
+.color-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%; /* Makes the element a circle */
+    display: inline-block;
+    border: 1px solid #ddd; /* Optional: adds a light border around the color circle */
+}
+
 
 .card img {
     width: 100%; /* Изображение занимает всю ширину карточки */
     height: 340px; /* Фиксированная высота изображения */
     object-fit: cover; /* Кадрирование изображения */
 }
+
 
 .card-details {
     padding: 5px;
@@ -428,18 +460,108 @@ button {
     font-family: "Muller";
 }
 
-/* Footer */
+/* Скрываем боковое меню по умолчанию */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+    padding-top: 20px;
+}
+
+/* Показываем боковое меню */
+.side-menu.menu-open {
+    left: 0;
+}
+
+/* Стили для крестика закрытия */
+.close-menu {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.burger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.burger-menu svg, .close-menu svg {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 720px) {
+    .left-nav, .between-nav {
+        display: none;
+    }
+
+    .div-side {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        margin-bottom: 40px;
+        margin-top: -20px;
+    }
+
+    .div-side img {
+        height: 30px;
+    }
+
+    .nav-links {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .burger-menu {
+        display: block;
+        width: 40px; /* Убедитесь, что контейнер имеет достаточную ширину */
+        height: 40px; /* Убедитесь, что контейнер имеет достаточную высоту */
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .side-menu-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .side-menu-links a {
+        font-size: 24px;
+        text-decoration: none;
+        color: black;
+    }
+
+    .navbar {
+        padding: 20px 15px;
+        display: flex;
+        align-items: center; /* добавлено для центрирования элементов */
+    }
+}
+
 footer {
     background-color: #686b99;
-    height: 500px !important;
+    height: auto;
     padding: 90px 0;
     color: #e9e9e9;
+    margin-top: 100px
 }
 
 .footer-container {
     display: grid;
-    grid-template-columns: 2fr 3fr 3fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
     align-items: start;
     max-width: 1200px;
     margin: 0 auto;
@@ -475,19 +597,9 @@ footer {
 
 .footer-column p {
     margin: 30px 0;
-    
 }
 
-.footer-title-p {
-    font-size: 17px;
-    line-height: 22px;
-    color: #ffffff;
-    font-weight: 500;
-    font-family: "Unbounded";
-    padding-bottom: 28px;
-
-}
-
+.footer-title-p,
 .footer-title {
     font-size: 17px;
     line-height: 22px;
@@ -511,15 +623,13 @@ footer {
 
 .footer-address {
     grid-column: 3 / 4;
-    font-size: 14px;
-    line-height: 1.3;
-    margin-top: 70px;
     font-size: 17px;
     line-height: 22px;
     color: #ffffff;
     font-weight: 300;
     font-family: "Muller";
     text-align: right;
+    margin-top: 70px;
 }
 
 .footer-address a.phone {
@@ -542,6 +652,7 @@ footer {
     text-align: center;
     font-size: 12px;
     margin-top: 50px;
+    font-family: "Muller";
 }
 
 .footer-policies a {
@@ -561,10 +672,101 @@ footer p, a {
     fill: #a0ff2b;
     height: 20px;
     aspect-ratio: 1;
-    margin-right: 8px; 
+    margin-right: 8px;
 }
 
 .footer-address .phone {
-    text-decoration: none; 
-    color: inherit; 
+    text-decoration: none;
+    color: inherit;
+}
+
+@media (max-width: 1116px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-logo,
+    .footer-links,
+    .footer-address {
+        grid-column: 1 / 2;
+        text-align: center;
+    }
+
+    .footer-address {
+        margin-top: 20px;
+    }
+
+    .footer-policies {
+        margin-top: 20px;
+    }
+
+    .footer-logo img {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 0 20px;
+    }
+
+    .footer-address {
+        margin-top: 10px;
+    }
+
+    .footer-policies a {
+        margin: 0 5px;
+    }
+
+    .container-items {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-container {
+        padding: 0 10px;
+    }
+
+    .footer-policies {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 768px) { /* Это может быть любой размер экрана, в зависимости от ваших требований */
+    .container-items {
+        flex-direction: column;
+    }
+
+    .product-image {
+        order: 1; /* Помещает изображение над деталями продукта */
+        padding-right: 0; /* Убирает отступы, если нужно */
+    }
+
+    .product-details {
+        order: 2; /* Помещает детали продукта под изображением */
+    }
+
+    .product-details-con {
+        width: auto;
+    }
+
+    .container-small {
+        padding: 0 20px;
+    }
+
+    .another-img {
+        justify-content: center;
+        margin-bottom: 60px;
+    }
+
+    .similar-products h2 {
+        text-align: center;
+    }
+
+    .cards-container {
+        display-flex;
+        justify-content: center;
+    }
 }

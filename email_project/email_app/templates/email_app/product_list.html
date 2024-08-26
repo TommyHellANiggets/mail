@@ -14,10 +14,11 @@
             <div class="">
                 <div class="navbar">
                     <div class="left-nav" id="leftNav">
-                        <a href="{% url 'main' %}" class="nav-links">О бренде</a>
-                        <a href="{% url 'catalog' %}" class="nav-links" style="text-decoration: underline;">Каталог</a>
+                        <a href="{% url 'main' %}" class="nav-links" style="text-decoration: underline;">О бренде</a>
+                        <a href="{% url 'catalog' %}" class="nav-links">Каталог</a>
                         <a href="{% url 'opt' %}" class="nav-links">Оптовикам</a>
                     </div>
+
                     <div class="right-nav">
                         <p>+7 (900) 451-00-06</p>
                     </div>
@@ -30,11 +31,14 @@
                 </div>
                 <!-- Боковое меню -->
                 <div class="side-menu" id="sideMenu">
-                    <div class="close-menu" id="closeMenu">
-                        <!-- Крестик для закрытия меню -->
-                        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512">
-                            <path d="M6.293,4.293a1,1,0,0,1,1.414,0L12,7.586,16.293,3.293a1,1,0,1,1,1.414,1.414L13.414,9,17.707,13.293a1,1,0,0,1-1.414,1.414L12,10.414,7.707,14.707a1,1,0,0,1-1.414-1.414L10.586,9,6.293,4.293Z"/>
-                        </svg>
+                    <div class="div-side">
+                        <a href="{% url 'main' %}"><img src="{% static 'img/logo.png' %}" alt="TAVA"></a>
+                        <div class="close-menu" id="closeMenu">
+                            <!-- Крестик для закрытия меню -->
+                            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512">
+                                <path d="M6.293,4.293a1,1,0,0,1,1.414,0L12,7.586,16.293,3.293a1,1,0,1,1,1.414,1.414L13.414,9,17.707,13.293a1,1,0,0,1-1.414,1.414L12,10.414,7.707,14.707a1,1,0,0,1-1.414-1.414L10.586,9,6.293,4.293Z"/>
+                            </svg>
+                        </div>
                     </div>
                     <div class="side-menu-links">
                         <a href="{% url 'main' %}" class="nav-links">О бренде</a>
@@ -52,15 +56,15 @@
         </div>
         <div class="container-small">
             <div class="links">
-                <a href="main.html" class="main-page">главная</a>
-                <a href="catalog.html" class="pages">каталог</a>
+                <a href="{% url 'main' %}" class="main-page">главная</a>
+                <a href="{% url 'catalog' %}" class="pages">каталог</a>
                 <a href="" class="pages">ПОДРОСТКИ</a>
             </div>
             <h1>коллекция</h1>
             <div class="cards-container">
                 {% for product in products %}
                 <div class="card">
-                    <a href="{% url 'product-detail' product.pk %}">
+                    <a href="{% url 'product-detail' product.pk %}"  class="a-img">
                         {% if product.images.first %}
                             <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
                         {% else %}
@@ -100,7 +104,7 @@
                     <p><a href="#">Каталог</a></p>
                 </div>
                 <div class="footer-column">
-                    <p class="footer-title-p">&nbsp;</p> 
+                    <p class="footer-title-p">&nbsp;</p>
                     <p><a href="#">Оптовикам</a></p>
                     <p><a href="#">Контакты</a></p>
                 </div>
@@ -120,21 +124,7 @@
             </div>
         </div>
     </footer>
+    <script src="{% static 'email_app/side.js' %}"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const burgerMenu = document.getElementById('burgerMenu');
-            const sideMenu = document.getElementById('sideMenu');
-            const closeMenu = document.getElementById('closeMenu');
-
-            burgerMenu.addEventListener('click', () => {
-                sideMenu.classList.add('menu-open');
-            });
-
-            closeMenu.addEventListener('click', () => {
-                sideMenu.classList.remove('menu-open');
-            });
-        });
-    </script>
 </body>
 </html>

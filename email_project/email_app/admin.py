@@ -1,7 +1,8 @@
-from django.contrib import admin
 from django import forms
-from django.utils.safestring import mark_safe
+from django.contrib import admin
 from .models import Product, Color, Size, ProductImage
+from django.utils.safestring import mark_safe
+
 
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
@@ -40,11 +41,22 @@ class ProductAdminForm(forms.ModelForm):
             for size in self.fields['sizes'].queryset
         ]
 
+class ProductImageInline(admin.TabularInline):
+    model = ProductImage
+    extra = 8  # Количество дополнительных форм для изображений
+    max_num = 8  # Максимальное количество изображений
+    fields = ['image', 'preview']
+
+    readonly_fields = ['preview']
+
+    def preview(self, obj):
+        return mark_safe(f'<img src="{obj.image.url}" style="max-height: 200px;"/>') if obj.image else ""
+
 class ProductAdmin(admin.ModelAdmin):
     form = ProductAdminForm
     inlines = [ProductImageInline]
 
-    list_display = ['name', 'category']
+    list_display = ['name', 'category', 'wildberries_link', 'ozon_link']
     search_fields = ['name', 'category']
 
     fieldsets = (
@@ -52,7 +64,7 @@ class ProductAdmin(admin.ModelAdmin):
             'fields': ('name', 'category')
         }),
         ('Details', {
-            'fields': ('colors', 'sizes', 'characteristics', 'care_instructions'),
+            'fields': ('colors', 'sizes', 'characteristics', 'care_instructions', 'wildberries_link', 'ozon_link'),
         }),
     )
 

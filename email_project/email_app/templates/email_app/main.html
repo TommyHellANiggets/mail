@@ -21,170 +21,81 @@
         </div>
     </header>
     <main>
-        <h1>коллекция<br>тава кидс</h1>
-        <div class="container">
-            <div class="card">
-                <a href=""><img src="{% static 'img/content1.png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
+<h1>коллекция<br>тава кидс</h1>
+<div class="container">
+    {% for product in kids_products %}
+        <div class="card">
+            <a href="{% url 'product-detail' product.pk %}">
+                {% if product.images.first %}
+                    <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                    <img src="{% static 'img/no_photo.png' %}" alt="No image available">
+                {% endif %}
+            </a>
+            <div class="more">
+                <a href="" style="text-decoration: underline;">Подробнее...</a>
+                <span>Рост 128-170</span>
             </div>
-            <div class="card">
-                <a href=""><img src="{% static 'img/content2.png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
-            </div>
-            <div class="card">
-                <a href=""><img src="{% static 'img/content3.png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
-            </div>
-            <div class="card">
-                <a href=""><img src="{% static 'img/content4.png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
-            </div>
-            <div class="card">
-                <a href=""><img src="{% static 'img/content5.png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
-            </div>
-            <div class="card">
-                <a href=""><img src="{% static 'img/content6.png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
-            </div>
+            <h2>{{ product.name }}</h2>
         </div>
-        <button type="button" class="all-collections">
-            <span>все коллекции</span>
-        </button>
-        <!--  -->
-        <h1>коллекция<br>тава кидс</h1>
-        <div class="container">
-            <div class="card">
-                <a href=""><img src="{% static 'img/elements (1).png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
+    {% empty %}
+        <p>Нет доступных товаров в категории "Дети".</p>
+    {% endfor %}
+</div>
+<button type="button" class="all-collections">
+    <span>все коллекции</span>
+</button>
+
+<h1>коллекция<br>тава подростки</h1>
+<div class="container">
+    {% for product in teens_products %}
+        <div class="card">
+            <a href="{% url 'product-detail' product.pk %}">
+                {% if product.images.first %}
+                    <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                    <img src="{% static 'img/no_photo.png' %}" alt="No image available">
+                {% endif %}
+            </a>
+            <div class="more">
+                <a href="" style="text-decoration: underline;">Подробнее...</a>
+                <span>Рост 128-170</span>
             </div>
-            <div class="card">
-                <a href=""><img src="{% static 'img/elements (13).png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
-            </div>
-            <div class="card">
-                <a href=""><img src="{% static 'img/elements (9).png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
-            </div>
-            <div class="card">
-                <a href=""><img src="{% static 'img/elements (8).png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
-            </div>
-            <div class="card">
-                <a href=""><img src="{% static 'img/elements (12).png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
-            </div>
-            <div class="card">
-                <a href=""><img src="{% static 'img/elements (1).png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
-            </div>
+            <h2>{{ product.name }}</h2>
         </div>
-        <button type="button" class="all-collections">
-            <span>все коллекции</span>
-        </button>
-        <!--  -->
-        <h1>коллекция<br>тава кидс</h1>
-        <div class="container">
-            <div class="card">
-                <a href=""><img src="{% static 'img/elements (1).png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
+    {% empty %}
+        <p>Нет доступных товаров в категории "Подростки".</p>
+    {% endfor %}
+</div>
+<button type="button" class="all-collections">
+    <span>все коллекции</span>
+</button>
+
+<h1>коллекция<br>тава женщины</h1>
+<div class="container">
+    {% for product in women_products %}
+        <div class="card">
+            <a href="{% url 'product-detail' product.pk %}">
+                {% if product.images.first %}
+                    <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                    <img src="{% static 'img/no_photo.png' %}" alt="No image available">
+                {% endif %}
+            </a>
+            <div class="more">
+                <a href="" style="text-decoration: underline;">Подробнее...</a>
+                <span>Рост 128-170</span>
             </div>
-            <div class="card">
-                <a href=""><img src="{% static 'img/elements (10).png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
-            </div>
-            <div class="card">
-                <a href=""><img src="{% static 'img/elements (5).png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
-            </div>
-            <div class="card">
-                <a href=""><img src="{% static 'img/elements (4).png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
-            </div>
-            <div class="card">
-                <a href=""><img src="{% static 'img/elements (3).png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
-            </div>
-            <div class="card">
-                <a href=""><img src="{% static 'img/elements (1).png' %}" alt=""></a>
-                <div class="more">
-                    <a href="" style="text-decoration: underline;">Подробнее...</a>
-                    <span>Рост 128-170</span>
-                </div>
-                <h2>Кофта флисовая на замке</h2>
-            </div>
+            <h2>{{ product.name }}</h2>
         </div>
-        <button type="button" class="all-collections">
-            <span>все коллекции</span>
-        </button>
+    {% empty %}
+        <p>Нет доступных товаров в категории "Женщины".</p>
+    {% endfor %}
+</div>
+<button type="button" class="all-collections">
+    <span>все коллекции</span>
+</button>
+
         <div class="container-info">
             <div class="container-info-content">
                 <div class="text-info">

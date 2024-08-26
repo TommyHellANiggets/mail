@@ -14,9 +14,12 @@ class Product(models.Model):
     sizes = models.ManyToManyField('Size', verbose_name="Размеры", blank=True)
     characteristics = models.TextField(verbose_name="Характеристики", blank=True)
     care_instructions = models.TextField(verbose_name="Уход за изделием", blank=True)
+    wildberries_link = models.URLField(verbose_name="Ссылка на Wildberries", blank=True, null=True)
+    ozon_link = models.URLField(verbose_name="Ссылка на Ozon", blank=True, null=True)
 
     def __str__(self):
         return self.name
+
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images', verbose_name="Продукт")

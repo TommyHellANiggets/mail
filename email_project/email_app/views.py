@@ -27,12 +27,26 @@ def opt(request):
 def success(request):
     return render(request, 'email_app/success.html')
 
+from .models import Product
 
 def main(request):
-    return render(request, 'email_app/main.html')
+    # Fetch up to 6 products for each category
+    kids_products = Product.objects.filter(category='children')[:6]
+    teens_products = Product.objects.filter(category='teens')[:6]
+    women_products = Product.objects.filter(category='women')[:6]
+
+    context = {
+        'kids_products': kids_products,
+        'teens_products': teens_products,
+        'women_products': women_products,
+    }
+    return render(request, 'email_app/main.html', context)
 
 def catalog(request):
     return render(request, 'email_app/catalog.html')
+
+def about_brand(request):
+    return render(request, 'email_app/about_brand.html')
 
 def privacy_policy(request):
     return render(request, 'email_app/privacy_policy.html')

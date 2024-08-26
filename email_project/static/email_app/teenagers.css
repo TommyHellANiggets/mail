@@ -137,6 +137,7 @@ input, textarea {
     height: auto; /* Сохраняет пропорции изображения */
     margin-bottom: 20px; /* Поднимает изображение вверх */
     transform: translateY(-20px); /* Поднимает изображение на 20px вверх */
+    padding: 0 20px;
 }
 
 .pages::before {
@@ -255,13 +256,12 @@ input, textarea {
     height: auto; /* Сохраняем пропорции иконок */
 }
 
-/* Основной футер */
 footer {
     background-color: #686b99;
     height: auto;
     padding: 90px 0;
     color: #e9e9e9;
-    margin-top: 120px;
+    margin-top: 100px
 }
 
 .footer-container {
@@ -358,6 +358,7 @@ footer {
     text-align: center;
     font-size: 12px;
     margin-top: 50px;
+    font-family: "Muller";
 }
 
 .footer-policies a {
@@ -385,50 +386,59 @@ footer p, a {
     color: inherit;
 }
 
-/* Медиазапросы для адаптивности */
-
-/* На устройствах с шириной экрана до 992px (например, планшеты) */
-@media (max-width: 992px) {
+@media (max-width: 1116px) {
     .footer-container {
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto auto;
-        padding: 0 20px;
-    }
-
-    .footer-logo {
-        grid-column: 1 / 2;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .footer-links {
-        grid-column: 1 / 2;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-column {
-        margin: 0px !important;
         text-align: center;
     }
 
-    .footer-title-p {
-        display: none;
-    }
-
+    .footer-logo,
+    .footer-links,
     .footer-address {
         grid-column: 1 / 2;
         text-align: center;
-        margin-top: 40px;
+    }
+
+    .footer-address {
+        margin-top: 20px;
     }
 
     .footer-policies {
-        grid-column: 1 / 2;
-        text-align: center;
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
+    .footer-logo img {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 0 20px;
+    }
+
+    .footer-address {
+        margin-top: 10px;
+    }
+
+    .footer-policies a {
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-container {
+        padding: 0 10px;
+    }
+
+    .footer-policies {
+        font-size: 10px;
+    }
+}
+
+
+/* На устройствах с шириной экрана до 992px (например, планшеты) */
+@media (max-width: 992px) {
     .card {
         width: calc(33% - 15px); /* Три карточки в строке */
 
@@ -452,35 +462,8 @@ footer p, a {
 
 /* На устройствах с шириной экрана до 576px (например, маленькие мобильные телефоны) */
 @media (max-width: 576px) {
-    .footer-logo img {
-        width: 80px;
-    }
-
     .card-details h3 {
         font-size: 20px;
-    }
-
-    .footer-info,
-    .footer-links a,
-    .footer-address a.phone {
-        font-size: 16px;
-    }
-
-    .footer-address {
-        font-size: 14px;
-    }
-
-    .footer-policies {
-        font-size: 10px;
-    }
-
-    .footer-column p {
-        margin: 0px !important;
-        text-align: center;
-    }
-
-    .footer-title-p {
-        display: none;
     }
 
     .cards-container {
@@ -528,16 +511,39 @@ footer p, a {
     height: 24px;
 }
 
-/* Скрываем левое меню на маленьких экранах и показываем бургер-меню */
-@media (max-width: 620px) {
-    .left-nav {
+@media (max-width: 720px) {
+    .left-nav, .between-nav {
         display: none;
+    }
+
+    .div-side {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        margin-bottom: 40px;
+        margin-top: -20px;
+    }
+
+    .div-side img {
+        height: 30px;
+    }
+
+    .nav-links {
+        margin: 0;
+        margin-bottom: 10px;
     }
 
     .burger-menu {
         display: block;
+        width: 40px; /* Убедитесь, что контейнер имеет достаточную ширину */
+        height: 40px; /* Убедитесь, что контейнер имеет достаточную высоту */
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
 
     .side-menu-links {
         display: flex;
@@ -553,6 +559,9 @@ footer p, a {
     }
 
     .navbar {
-        padding: 20px 15 !important;
+        padding: 20px 15px;
+        display: flex;
+        align-items: center; /* добавлено для центрирования элементов */
     }
 }
+

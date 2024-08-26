@@ -15,11 +15,11 @@
     font-weight: normal; 
 } 
 
-  @font-face {
-    font-family: "Muller"; 
-    src: url("../fonts/Muller.ttf") format("truetype"); 
-    font-style: normal; 
-    font-weight: normal; 
+@font-face {
+    font-family: "Muller";
+    src: url("../fonts/Muller.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
 } 
 
 * {
@@ -156,7 +156,28 @@ main h1{
 }
 
 .card {
-    width: 270px;
+    width: 240px; /* Или ширина по вашему выбору */
+    background-color: #fff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.card a {
+    display: block; /* Убедитесь, что ссылка занимает всю ширину карточки */
+}
+
+.card img {
+    display: block; /* Убирает пробел под изображением */
+    max-width: 100%; /* Устанавливает максимальную ширину изображения равной ширине контейнера */
+    height: auto; /* Сохраняет пропорции изображения */
+}
+
+
+
+.card img:hover {
+    filter: brightness(80%); /* Затемняет карточку на 20% при наведении */
 }
 
 .all-collections {
@@ -203,6 +224,10 @@ main h1{
     color: #969696;
     font-family: "Muller";
     margin: 10px 0;
+}
+
+.more span {
+    text-align: end !important;
 }
 
 .container-info {
