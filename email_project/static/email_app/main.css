@@ -9,18 +9,18 @@
 }
 
 @font-face {
-    font-family: "Unbounded"; 
-    src: url("../fonts/Unbounded.ttf") format("truetype"); 
-    font-style: normal; 
-    font-weight: normal; 
-} 
+    font-family: "Unbounded";
+    src: url("../fonts/Unbounded.woff2") format("woff2");
+    font-style: normal;
+    font-weight: normal;
+}
 
 @font-face {
     font-family: "Muller";
-    src: url("../fonts/Muller.ttf") format("truetype");
+    src: url("../fonts/Muller.woff2") format("woff2");
     font-style: normal;
     font-weight: normal;
-} 
+}
 
 * {
     margin: 0;
@@ -72,16 +72,19 @@ html {
     -ms-overflow-style: none;
 }
 
-
 header {
     height: 730px;
-    background-image: url('/static/img/banner.png') !important;
     background-size: cover;
     position: relative;
 }
 
+.main-bg {
+    width: 100% !important;
+    height: 730px;
+    object-fit: cover;
+    background-position: 200px -50px; /* Смещение вверх для опускания изображения */
+}
 
-/* Navbar */
 .navbar {
     width: var(--navbar-width);
     max-width: var(--max-width);
@@ -97,8 +100,9 @@ header {
 
 .left-nav {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 30px;
     color: var(--text-color);
 }
 
@@ -173,7 +177,7 @@ main h1{
     max-width: 240px; /* Максимальная ширина карточки */
     background-color: #fff;
     overflow: hidden;
-    display: flex;
+    display: inline-block;
     flex-direction: column;
     transition: transform 0.3s ease;
 }
@@ -192,7 +196,29 @@ main h1{
         max-width: 45%; /* Максимальная ширина карточки при уменьшении экрана */
     }
 }
+@media (max-width: 1580px) {
+    .card:nth-child(6) {
+        display: none;
+    }
+}
 
+@media (max-width: 1320px) {
+    .card:nth-child(5) {
+        display: none;
+    }
+}
+
+@media (max-width: 1060px) {
+    .card:nth-child(4) {
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .card:nth-child(3) {
+        display: none;
+    }
+}
 
 .card span {
     text-align: end;
@@ -213,11 +239,9 @@ main h1{
     margin-bottom: 50px;
 }
 
-
 .card a:hover {
     filter: brightness(80%); /* Затемняет карточку на 20% при наведении */
 }
-
 
 .all-collections span {
     font-size: 15px;
@@ -242,6 +266,8 @@ main h1{
     line-height: 26px;
     color: #000000;
     font-family: "Muller";
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .more {
@@ -335,8 +361,48 @@ main h1{
 }
 
 .text-block-header {
-    display: none;
     position: relative;
+    display: flex;
+    justify-content: space-between; /* Размещает элементы по краям */
+    align-items: center; /* Центрирует элементы по вертикали */
+}
+
+.left-head {
+    position: relative;
+    top: -729px;
+}
+
+.text-block-real {
+    position: absolute;
+    top: 200px;
+    left: 32%;
+    transform: translateX(-32%);
+}
+
+
+.right-head {
+    position: relative;
+    top: -729px; /* Проверьте это значение, возможно, оно слишком большое */
+    max-width: 100%; /* Ограничение ширины для лучшего отображения */
+    left: 65%;
+    transform: translateX(-65%);
+}
+
+.text-block-real h1 {
+    max-width: 480px;
+    font-size: 48px;
+    line-height: 45px;
+    color: #000000;
+    font-weight: 800;
+    font-family: "Unbounded";
+}
+
+.text-block-real p {
+    max-width: 380px;
+    font-size: 22px;
+    line-height: 28px;
+    color: #000000;
+    font-family: "Unbounded";
 }
 
 footer {
@@ -506,15 +572,52 @@ footer p, a {
     .footer-policies a {
         margin: 0 5px;
     }
+
+    .text-info h3 {
+        font-size: 25px;
+    }
 }
 
 @media (max-width: 576px) {
+    .text-block-real2 h1 {
+        font-size: clamp(32px, 4vw, 48px); /* 4vw даст плавное уменьшение в пределах от 22px до 27px */
+        line-height: clamp(32px, 4vw, 48px); /* аналогично, уменьшение высоты строки */
+    }
+
+    .text-block-real2 {
+        margin-top: -80px;
+    }
+
+    header, .main-bg {
+        height: 550px;
+        margin-bottom: 50px;
+    }
+
+    .text-block-real2 p {
+        font-size: clamp(18px, 4vw, 22px); /* чуть больший шаг для плавного уменьшения текста */
+        line-height: clamp(18px, 4vw, 22px); /* аналогично для высоты строки */
+    }
+
+    .text-info h3 {
+        font-size: clamp(22px, 4vw, 27px); /* 4vw даст плавное уменьшение в пределах от 22px до 27px */
+        line-height: clamp(24px, 4.5vw, 30px); /* аналогично, уменьшение высоты строки */
+    }
+
+    .text-info p {
+        font-size: clamp(16px, 3.5vw, 20px); /* чуть больший шаг для плавного уменьшения текста */
+        line-height: clamp(18px, 4vw, 22px); /* аналогично для высоты строки */
+    }
+
     .footer-container {
         padding: 0 10px;
     }
 
     .footer-policies {
         font-size: 10px;
+    }
+
+    .more {
+        display: block;
     }
 }
 
@@ -614,7 +717,16 @@ footer p, a {
     }
 }
 
+@media (max-width: 1200px) {
+    .right-head {
+        display: none;
+    }
 
+    .text-block-real {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
 
 @media (max-width: 1180px) {
     .container-love-winter img {
@@ -631,22 +743,6 @@ footer p, a {
         line-height: clamp(18px, 4vw + 1rem, 31px);
     }
 
-    header {
-        height: 730px;
-        background-image: url('/static/img/about2.png') !important;
-        background-size: cover;
-        position: relative;
-    }
-
-    .text-block-header {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 90%;
-        text-align: start;
-        padding: 0 20px;
-    }
 
     .text-block-header h1 {
         font-size: clamp(16px, 2vw + 1rem, 40px); /* Минимальный размер 24px, максимальный 40px */
@@ -656,7 +752,7 @@ footer p, a {
         color: #171717;
         font-weight: 900;
         font-family: "Unbounded";
-        max-width: 480px;
+        max-width: 470px;
         margin-bottom: 30px;
     }
 
@@ -668,12 +764,11 @@ footer p, a {
         color: #171717;
         font-weight: 400;
         font-family: "Unbounded";
-        max-width: 480px;
+        max-width: 470px;
     }
 
     main {
         position: relative;
-        top: -130px;
     }
 
     footer {

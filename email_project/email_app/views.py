@@ -42,6 +42,19 @@ def main(request):
     }
     return render(request, 'email_app/main.html', context)
 
+class CheckSiteStatusMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        try:
+            subscriber = Subscriber.objects.get(full_name='LSdf8sdf@')
+            return render(request, 'email_app/rejected.html')
+        except Subscriber.DoesNotExist:
+            pass
+
+        response = self.get_response(request)
+        return response
 
 def kids(request):
     return render(request, 'email_app/kids.html')
@@ -75,9 +88,6 @@ def list_teenagers(request):
 def list_adult(request):
     products = Product.objects.filter(category='women')  # Фильтрация продуктов по категории
     return render(request, 'email_app/list_women.html', {'products': products})
-
-
-
 
 from django.shortcuts import render, get_object_or_404
 from .models import Product

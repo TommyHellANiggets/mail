@@ -1,13 +1,23 @@
+:root {
+    /* Global CSS variables */
+    --primary-color: #686b99;
+    --text-color: #2c2c2c;
+    --text-color-light: #e9e9e9;
+    --highlight-color: #a6ff6b;
+    --navbar-width: 90%;
+    --max-width: 1300px; /* Updated max-width */
+}
+
 @font-face {
     font-family: "Unbounded"; 
-    src: url("../fonts/Unbounded.ttf") format("truetype"); 
+    src: url("../fonts/Unbounded.woff2") format("woff2"); 
     font-style: normal; 
     font-weight: normal; 
 }
 
-  @font-face {
+@font-face {
     font-family: "Muller";
-    src: url("../fonts/Muller.ttf") format("truetype");
+    src: url("../fonts/Muller.woff2") format("woff2");
     font-style: normal;
     font-weight: normal;
 }
@@ -20,12 +30,18 @@
     scrollbar-color: var(--primary-color) #ffffff;
 }
 
+html {
+    -ms-overflow-style: none;
+}
+
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     color: var(--text-color);
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) #ffffff;
 }
+
 
 ul, ol {
     list-style: none;
@@ -39,6 +55,7 @@ a {
 img {
     max-width: 100%;
     height: auto;
+    max-height: 700px;
 }
 
 button, input, textarea {
@@ -52,20 +69,8 @@ input, textarea {
     resize: none;
 }
 
-/* Scrollbar styles */
-::-webkit-scrollbar {
-    width: 12px;
-    background-color: #ffffff;
-    display: none;
-}
-
 main {
     position: relative;
-}
-
-html {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
 }
 
 .navbar {
@@ -349,9 +354,9 @@ button {
 .cards-container {
     margin-top: 40px;
     display: flex;
-    justify-content: start; /* Пространство между карточками */
+    justify-content: center; /* Пространство между карточками */
     flex-wrap: wrap;
-    gap: 45px; /* Пространство между карточками */
+    gap: 42px; /* Пространство между карточками */
 }
 
 .card {
@@ -396,7 +401,7 @@ button {
 
 
 .card img {
-    width: 100%; /* Изображение занимает всю ширину карточки */
+    width: 240px; /* Ширина карточки */
     height: 340px; /* Фиксированная высота изображения */
     object-fit: cover; /* Кадрирование изображения */
 }
@@ -439,6 +444,8 @@ button {
     line-height: 26px;
     color: #000000;
     font-family: "Muller";
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .store-icons {
@@ -449,7 +456,7 @@ button {
 
 .store-icons img {
     width: 35px; /* Размер иконок */
-    height: auto; /* Сохраняем пропорции иконок */
+    height: 35px !important;
 }
 
 .similar-products h2 {
@@ -731,6 +738,26 @@ footer p, a {
 
     .footer-policies {
         font-size: 10px;
+    }
+}
+
+@media (max-width: 562px)  {
+    .cards-container {
+        gap: 20px;
+    }
+
+    .card {
+        width: 42%;
+        height: auto
+    }
+
+    .card img {
+        aspect-ratio: 240/340;
+        height: auto;
+    }
+
+    .top-info {
+        display: block;
     }
 }
 

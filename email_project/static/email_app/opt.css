@@ -10,14 +10,14 @@
 
 @font-face {
     font-family: "Unbounded";
-    src: url("../fonts/Unbounded.ttf") format("truetype");
+    src: url("../fonts/Unbounded.woff2") format("woff2");
     font-style: normal;
     font-weight: normal;
 }
 
 @font-face {
     font-family: "Muller";
-    src: url("../fonts/Muller.ttf") format("truetype");
+    src: url("../fonts/Muller.woff2") format("woff2");
     font-style: normal;
     font-weight: normal;
 }
@@ -186,8 +186,8 @@ main {
     position: absolute;
     top: -126px;
     left: -90px;
-    height: 690px;
     width: 412px;
+    aspect-ratio: 412/690;
 }
 
 .second-step {
@@ -215,8 +215,8 @@ main {
     position: absolute;
     top: -120px;
     left: 600px;
-    height: 630px;
     width: 525px;
+    aspect-ratio: 525/630;
 }
 
 .guarantees h1 {
@@ -387,12 +387,13 @@ main {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        padding-top: 600px !important;
+        margin-top: 200px;
     }
 
     .first-left-content img {
         position: static;
-        width: 80%;
-        margin-bottom: 20px;
+        width: 40%;
     }
 
     .first-right-content {
@@ -403,25 +404,22 @@ main {
     .second-step {
         flex-direction: column-reverse;
         align-items: center;
+        margin-top: 130px;
+        padding-top: 400px;
+    }
+
+    .second-right-content {
+        display: flex;
+        justify-content: center;
     }
 
     .second-right-content img {
         position: static;
-        width: 80%;
-        margin-bottom: 20px;
+        width: 50%;
     }
 
     .second-left-content p {
         text-align: center;
-    }
-
-    .navbar {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .navbar .nav-links, .navbar .right-nav {
-        margin: 10px 0;
     }
 }
 
@@ -440,13 +438,10 @@ main {
         line-height: 28px;
     }
 
-    .first-step, .second-step, .green-box {
-        padding: 20px;
-        height: auto;
-    }
 
-    .first-left-content img, .second-right-content img {
-        width: 100%;
+    .first-left-content {
+        display: flex;
+        justify-content: center
     }
 
     .navbar {
@@ -708,6 +703,10 @@ footer p, a {
 }
 
 @media (max-width: 768px) {
+    .guarantees h1 {
+        margin-top: 60px;
+    }
+
     .footer-container {
         padding: 0 20px;
     }
@@ -726,6 +725,40 @@ footer p, a {
 }
 
 @media (max-width: 576px) {
+    .first-right-content h2 {
+        margin: 10px 0;
+    }
+
+    .second-step {
+        margin-top: 20px;
+    }
+
+    .first-right-content {
+        min-width: 290px;
+        width: 90%;
+    }
+
+    .second-left-content {
+        min-width: 290px;
+        width: 90%;
+    }
+
+    .second-right-content img {
+        min-width: 200px;
+    }
+
+    .first-left-content img {
+        min-width: 135px;
+    }
+
+    .first-step {
+        margin-top: 80px;
+    }
+
+    .guarantees-text {
+        font-size: 20px !important;
+    }
+
     .footer-container {
         padding: 0 10px;
     }

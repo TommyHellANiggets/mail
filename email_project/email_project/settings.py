@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-qbpza1(i*g-&qqhm1ta16w5ymjb@224-%cog**hqlrpzddqdih
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dead-79-142-70-55.ngrok-free.app', '127.0.0.1']
 
 
 # Application definition
@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'email_app.apps.EmailAppConfig',
-
 ]
 
 MIDDLEWARE = [
@@ -49,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'email_app.views.CheckSiteStatusMiddleware',
 ]
 
 ROOT_URLCONF = 'email_project.urls'

@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'email_app/kids.css' %}">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'email_app/styles.css' %}">
+
+    <title>Детям | TAVA</title>
 </head>
 <body>
     <main>
@@ -14,8 +16,8 @@
             <div class="">
                 <div class="navbar">
                     <div class="left-nav" id="leftNav">
-                        <a href="{% url 'main' %}" class="nav-links" style="text-decoration: underline;">О бренде</a>
-                        <a href="{% url 'catalog' %}" class="nav-links">Каталог</a>
+                        <a href="{% url 'about_brand' %}" class="nav-links">О бренде</a>
+                        <a href="{% url 'catalog' %}" class="nav-links" style="text-decoration: underline;">Каталог</a>
                         <a href="{% url 'opt' %}" class="nav-links">Оптовикам</a>
                     </div>
 
@@ -80,8 +82,18 @@
                         </div>
                         <h3>{{ product.name }}</h3>
                         <div class="store-icons">
-                            <a href="#"><img src="{% static 'img/ozon.png' %}" alt="Ozon"></a>
-                            <a href="#"><img src="{% static 'img/wb.png' %}" alt="WB"></a>
+                            <div class="product-links">
+                                {% if product.wildberries_link %}
+                                    <a href="{{ product.wildberries_link }}" class="store-link" target="_blank">
+                                        <img src="{% static 'img/wb.png' %}" alt="Wildberries">
+                                    </a>
+                                {% endif %}
+                                {% if product.ozon_link %}
+                                    <a href="{{ product.ozon_link }}" class="store-link" target="_blank">
+                                        <img src="{% static 'img/ozon.png' %}" alt="Ozon">
+                                    </a>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,13 +112,13 @@
             <div class="footer-links">
                 <div class="footer-column">
                     <p class="footer-title">Разделы</p>
-                    <p><a href="#">О бренде</a></p>
-                    <p><a href="#">Каталог</a></p>
+                    <p><a href="{% url 'about_brand' %}">О бренде</a></p>
+                    <p><a href="{% url 'catalog' %}">Каталог</a></p>
                 </div>
                 <div class="footer-column">
                     <p class="footer-title-p">&nbsp;</p>
-                    <p><a href="#">Оптовикам</a></p>
-                    <p><a href="#">Контакты</a></p>
+                    <p><a href="{% url 'opt' %}">Оптовикам</a></p>
+                    <p><a href="">Контакты</a></p>
                 </div>
             </div>
             <div class="footer-address">

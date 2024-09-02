@@ -1,0 +1,484 @@
+/* Font-face declarations */
+@font-face {
+    font-family: "Unbounded";
+    src: url("../fonts/Unbounded.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Muller";
+    src: url("../fonts/Muller.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+/* Global CSS variables */
+:root {
+    --primary-color: #686b99;
+    --text-color: #2c2c2c;
+    --text-color-light: #e9e9e9;
+    --highlight-color: #a6ff6b;
+    --navbar-width: 90%;
+    --max-width: 1180px; /* Updated max-width */
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) #ffffff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button, input, textarea {
+    border: none;
+    outline: none;
+    background: none;
+    font: inherit;
+}
+
+input, textarea {
+    resize: none;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #ffffff;
+}
+
+html {
+    -ms-overflow-style: none;
+}
+
+/* Navbar */
+.navbar {
+    width: var(--navbar-width);
+    max-width: var(--max-width);
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 70px;
+}
+
+
+.left-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: black;
+}
+
+.left-nav a {
+    font-size: 18px;
+    font-weight: 500;
+    position: relative;
+    color: inherit;
+    padding: 5px 10px;
+    font-family: "Muller";
+}
+
+
+.right-nav {
+    color: #686b99;
+    font-size: 24px;
+    font-family: "Muller";
+}
+
+/* Main content */
+main {
+    position: relative;
+    background-color: white;
+    z-index: 1;
+}
+
+main img {
+    background-size: cover;
+    background-position: center;
+    display: block;
+    margin: 0 auto;
+}
+
+.second-img {
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+    position: absolute;
+    top: 50px;
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translateX(-50%); /* Смещение на 50% по обеим осям */
+    width: 50%;
+    max-width: 1000px;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translateX(-50%); /* Смещение на 50% по обеим осям */
+    gap: 10px;
+    margin-top: -50px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+    padding: 0 15px;
+}
+
+/* Smooth resizing effect */
+.block {
+    flex: 1 1 calc(50% - 20px);
+    max-width: 679px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    position: relative;
+}
+
+.block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crops the image to fit the container without stretching */
+    transition: filter 0.3s ease-in-out;
+}
+
+.block img:hover {
+    filter: brightness(0.75);
+}
+
+/* Скрываем боковое меню по умолчанию */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+    padding-top: 20px;
+}
+
+/* Показываем боковое меню */
+.side-menu.menu-open {
+    left: 0;
+}
+
+/* Стили для крестика закрытия */
+.close-menu {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.burger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.burger-menu svg, .close-menu svg {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 720px) {
+    .left-nav, .between-nav {
+        display: none;
+    }
+
+    navbar {
+        top: 70px;
+    }
+
+    .div-side {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        margin-bottom: 40px;
+        margin-top: -20px;
+    }
+
+    .div-side img {
+        height: 30px;
+    }
+
+    .nav-links {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .burger-menu {
+        display: block;
+        width: 40px; /* Убедитесь, что контейнер имеет достаточную ширину */
+        height: 40px; /* Убедитесь, что контейнер имеет достаточную высоту */
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .side-menu-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .side-menu-links a {
+        font-size: 24px;
+        text-decoration: none;
+        color: black;
+    }
+
+    .navbar {
+        padding: 20px 15px;
+        display: flex;
+        align-items: center; /* добавлено для центрирования элементов */
+    }
+}
+
+footer {
+    background-color: #686b99;
+    height: auto;
+    padding: 90px 0;
+    color: #e9e9e9;
+    margin-top: 700px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-logo {
+    grid-column: 1 / 2;
+    text-align: left;
+}
+
+.footer-logo img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.footer-info {
+    font-size: 17px;
+    line-height: 22px;
+    color: #ffffff;
+    font-weight: 300;
+    font-family: "Muller";
+}
+
+.footer-links {
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+}
+
+.footer-column p {
+    margin: 30px 0;
+}
+
+.footer-title-p,
+.footer-title {
+    font-size: 17px;
+    line-height: 22px;
+    color: #ffffff;
+    font-weight: 500;
+    font-family: "Unbounded";
+    padding-bottom: 28px;
+}
+
+.footer-links a {
+    font-size: 17px;
+    line-height: 22px;
+    color: #ffffff;
+    font-weight: 300;
+    font-family: "Muller";
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-address {
+    grid-column: 3 / 4;
+    font-size: 17px;
+    line-height: 22px;
+    color: #ffffff;
+    font-weight: 300;
+    font-family: "Muller";
+    text-align: right;
+    margin-top: 70px;
+}
+
+.footer-address a.phone {
+    display: block;
+    margin-top: 40px;
+    font-size: 23px;
+    line-height: 29px;
+    color: #a0ff2b;
+    font-weight: 500;
+    font-family: "Muller";
+}
+
+.footer-address a.phone:hover {
+    text-decoration: underline;
+}
+
+.footer-policies {
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 50px;
+    font-family: "Muller";
+}
+
+.footer-policies a {
+    margin: 0 15px;
+    color: #e9e9e9;
+}
+
+.footer-policies a:hover {
+    text-decoration: underline;
+}
+
+footer p, a {
+    font-size: 18px;
+}
+
+.footer-address svg {
+    fill: #a0ff2b;
+    height: 20px;
+    aspect-ratio: 1;
+    margin-right: 8px;
+}
+
+.footer-address .phone {
+    text-decoration: none;
+    color: inherit;
+}
+
+@media (max-width: 1250px) {
+    footer {
+        margin-top: 60%;
+    }
+}
+
+
+/* Single column layout at 600px or less */
+@media (max-width: 600px) {
+    .block {
+        flex: 1 1 100%; /* Each block will take 100% of the width, one per row */
+        max-width: 100%; /* Ensure it takes full width of the row */
+    }
+
+    .container {
+        margin-top: 15px;
+    }
+
+    footer {
+        position: relative;
+        margin-top: 230%;
+    }
+}
+
+
+@media (max-width: 1116px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-logo,
+    .footer-links,
+    .footer-address {
+        grid-column: 1 / 2;
+        text-align: center;
+    }
+
+    .footer-address {
+        margin-top: 20px;
+    }
+
+    .footer-policies {
+        margin-top: 20px;
+    }
+
+    .footer-logo img {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 0 20px;
+    }
+
+    .footer-address {
+        margin-top: 10px;
+    }
+
+    .footer-policies a {
+        margin: 0 5px;
+    }
+
+    .container-items {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-container {
+        padding: 0 10px;
+    }
+
+    .footer-policies {
+        font-size: 10px;
+    }
+}

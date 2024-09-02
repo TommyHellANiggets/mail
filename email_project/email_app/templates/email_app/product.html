@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'email_app/item-page.css' %}">
-    <title>{{ product.name }}</title>
+    <link rel="stylesheet" href="{% static 'email_app/styles.css' %}">
+
+    <title>{{ product.name }} | TAVA</title>
 </head>
 <body>
     <header>
         <div class="navbar">
             <div class="left-nav" id="leftNav">
-                <a href="{% url 'main' %}" class="nav-links" style="text-decoration: underline;">О бренде</a>
-                <a href="{% url 'catalog' %}" class="nav-links">Каталог</a>
+                <a href="{% url 'about_brand' %}" class="nav-links">О бренде</a>
+                <a href="{% url 'catalog' %}" class="nav-links" style="text-decoration: underline;">Каталог</a>
                 <a href="{% url 'opt' %}" class="nav-links">Оптовикам</a>
             </div>
             <div class="between-nav">
@@ -128,11 +130,17 @@
                 <div class="cards-container">
                     {% for similar_product in similar_products %}
                         <div class="card">
-                            <img src="{{ similar_product.images.first.image.url }}" alt="{{ similar_product.name }}">
+                            <a href="{% url 'product-detail' similar_product.pk %}">
+                                {% if product.images.first %}
+                                    <img src="{{ similar_product.images.first.image.url }}" alt="{{ similar_product.name }}">
+                                {% else %}
+                                    <img src="{% static 'img/no_photo.png' %}" alt="No image available">
+                                {% endif %}
+                            </a>
                             <div class="card-details">
                                 <div class="top-info">
                                     <a href="{% url 'product-detail' similar_product.pk %}" class="more-info">Подробнее...</a>
-                                    <span class="colors">+ {{ similar_product.colors.count }} цвета</span>
+                                    <p class="colors">+ {{ similar_product.colors.count }} цвета</p>
                                 </div>
                                 <h3>{{ similar_product.name }}</h3>
                                 <div class="store-icons">
@@ -167,13 +175,13 @@
             <div class="footer-links">
                 <div class="footer-column">
                     <p class="footer-title">Разделы</p>
-                    <p><a href="#">О бренде</a></p>
-                    <p><a href="#">Каталог</a></p>
+                    <p><a href="{% url 'about_brand' %}">О бренде</a></p>
+                    <p><a href="{% url 'catalog' %}">Каталог</a></p>
                 </div>
                 <div class="footer-column">
                     <p class="footer-title-p">&nbsp;</p>
-                    <p><a href="#">Оптовикам</a></p>
-                    <p><a href="#">Контакты</a></p>
+                    <p><a href="{% url 'opt' %}">Оптовикам</a></p>
+                    <p><a href="">Контакты</a></p>
                 </div>
             </div>
             <div class="footer-address">

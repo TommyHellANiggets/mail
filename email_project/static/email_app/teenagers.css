@@ -11,14 +11,14 @@
 /* Подключение шрифтов */
 @font-face {
     font-family: "Unbounded";
-    src: url("../fonts/Unbounded.ttf") format("truetype");
+    src: url("../fonts/Unbounded.woff2") format("woff2");
     font-style: normal;
     font-weight: normal;
 }
 
 @font-face {
     font-family: "Muller";
-    src: url("../fonts/Muller.ttf") format("truetype");
+    src: url("../fonts/Muller.woff2") format("woff2");
     font-style: normal;
     font-weight: normal;
 }
@@ -214,7 +214,7 @@ input, textarea {
 .card img {
     aspect-ratio: 3 / 4;
     width: 100%; /* Изображение занимает всю ширину карточки */
-    height: 100%; /* Высота изменяется пропорционально ширине */
+    height: auto; /* Высота изменяется пропорционально ширине */
     object-fit: cover; /* Изображение масштабируется с сохранением пропорций */
 }
 
@@ -269,8 +269,9 @@ input, textarea {
 
 .store-icons img {
     width: 35px; /* Размер иконок */
-    height: auto; /* Сохраняем пропорции иконок */
+    aspect-ratio: 1;
 }
+
 
 footer {
     background-color: #686b99;

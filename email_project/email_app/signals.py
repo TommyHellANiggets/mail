@@ -5,16 +5,15 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .models import Subscriber
 
-
 @receiver(post_save, sender=Subscriber)
 def send_welcome_email(sender, instance, created, **kwargs):
     if created:  # Проверяем, что запись создана
-        subject = 'Спасибо за подписку!'
+        subject = 'Новый клиент!'
         email_from = settings.EMAIL_HOST_USER
-        recipient_list = [instance.email]
+        recipient_list = ['tommyhellaniggets@gmail.com']  # Определённый email, на который будет отправляться письмо
 
         # Текстовое содержание письма
-        text_content = 'Добро пожаловать! Спасибо за подписку на наши обновления.'
+        text_content = f'Новый клиент! Свяжитесь с ним по следующим данным: \nФИО: {instance.full_name}\nКомпания: {instance.company_name}\nТелефон: {instance.phone_number}\nEmail: {instance.email}'
 
         # HTML-содержание письма
         html_content = render_to_string('welcome_email.html', {'subscriber': instance})

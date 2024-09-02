@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib import admin
-from .models import Product, Color, Size, ProductImage
+from .models import Product, Color, Size, ProductImage, Subscriber
 from django.utils.safestring import mark_safe
 
 
@@ -71,3 +71,4 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Color)
 admin.site.register(Size)
+admin.site.register(Subscriber)

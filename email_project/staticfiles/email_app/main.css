@@ -9,18 +9,18 @@
 }
 
 @font-face {
-    font-family: "Unbounded"; 
-    src: url("../fonts/Unbounded.ttf") format("truetype"); 
-    font-style: normal; 
-    font-weight: normal; 
-} 
+    font-family: "Unbounded";
+    src: url("../fonts/Unbounded.woff2") format("woff2");
+    font-style: normal;
+    font-weight: normal;
+}
 
 @font-face {
     font-family: "Muller";
-    src: url("../fonts/Muller.ttf") format("truetype");
+    src: url("../fonts/Muller.woff2") format("woff2");
     font-style: normal;
     font-weight: normal;
-} 
+}
 
 * {
     margin: 0;
@@ -72,7 +72,6 @@ html {
     -ms-overflow-style: none;
 }
 
-
 header {
     height: 730px;
     background-image: url('/static/img/banner.png') !important;
@@ -80,8 +79,6 @@ header {
     position: relative;
 }
 
-
-/* Navbar */
 .navbar {
     width: var(--navbar-width);
     max-width: var(--max-width);
@@ -97,6 +94,7 @@ header {
 
 .left-nav {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     gap: 10px;
     color: var(--text-color);
@@ -173,7 +171,7 @@ main h1{
     max-width: 240px; /* Максимальная ширина карточки */
     background-color: #fff;
     overflow: hidden;
-    display: flex;
+    display: inline-block;
     flex-direction: column;
     transition: transform 0.3s ease;
 }
@@ -192,7 +190,29 @@ main h1{
         max-width: 45%; /* Максимальная ширина карточки при уменьшении экрана */
     }
 }
+@media (max-width: 1580px) {
+    .card:nth-child(6) {
+        display: none;
+    }
+}
 
+@media (max-width: 1320px) {
+    .card:nth-child(5) {
+        display: none;
+    }
+}
+
+@media (max-width: 1060px) {
+    .card:nth-child(4) {
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .card:nth-child(3) {
+        display: none;
+    }
+}
 
 .card span {
     text-align: end;
@@ -211,6 +231,10 @@ main h1{
     margin: 0 auto;
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+.card a:hover {
+    filter: brightness(80%); /* Затемняет карточку на 20% при наведении */
 }
 
 .all-collections span {
@@ -236,6 +260,8 @@ main h1{
     line-height: 26px;
     color: #000000;
     font-family: "Muller";
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .more {
@@ -286,22 +312,6 @@ main h1{
     font-family: "Muller";
 }
 
-.container-love-winter {
-    height: 708px;
-    background-image: url('/static/img/bg-bottom-main.png');
-    background-repeat: no-repeat;
-    background-position: center; /* Центрирование изображения */
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-
-.container-love-winter img {
-    position: relative;
-    margin-top: -70px;
-    max-height: 780px;
-}
 
 .text-block {
     max-width: 520px;
@@ -500,15 +510,33 @@ footer p, a {
     .footer-policies a {
         margin: 0 5px;
     }
+
+    .text-info h3 {
+        font-size: 25px;
+    }
 }
 
 @media (max-width: 576px) {
+    .text-info h3 {
+        font-size: clamp(22px, 4vw, 27px); /* 4vw даст плавное уменьшение в пределах от 22px до 27px */
+        line-height: clamp(24px, 4.5vw, 30px); /* аналогично, уменьшение высоты строки */
+    }
+
+    .text-info p {
+        font-size: clamp(16px, 3.5vw, 20px); /* чуть больший шаг для плавного уменьшения текста */
+        line-height: clamp(18px, 4vw, 22px); /* аналогично для высоты строки */
+    }
+
     .footer-container {
         padding: 0 10px;
     }
 
     .footer-policies {
         font-size: 10px;
+    }
+
+    .more {
+        display: block;
     }
 }
 
@@ -650,7 +678,7 @@ footer p, a {
         color: #171717;
         font-weight: 900;
         font-family: "Unbounded";
-        max-width: 480px;
+        max-width: 470px;
         margin-bottom: 30px;
     }
 
@@ -662,11 +690,15 @@ footer p, a {
         color: #171717;
         font-weight: 400;
         font-family: "Unbounded";
-        max-width: 480px;
+        max-width: 470px;
     }
 
-    main, footer {
+    main {
         position: relative;
         top: -130px;
+    }
+
+    footer {
+        margin-top: -130px;
     }
 }

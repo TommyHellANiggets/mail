@@ -1,26 +1,37 @@
 /* Подключение шрифтов */
 @font-face {
     font-family: "Unbounded";
-    src: url("../fonts/Unbounded.ttf") format("truetype");
+    src: url("../fonts/Unbounded.woff2") format("woff2");
     font-style: normal;
     font-weight: normal;
 }
 
 @font-face {
     font-family: "Muller";
-    src: url("../fonts/Muller.ttf") format("truetype");
+    src: url("../fonts/Muller.woff2") format("woff2");
     font-style: normal;
     font-weight: normal;
 }
 
-/* Основные стили */
+html {
+    -ms-overflow-style: none !important;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) #ffffff;
+    scrollbar-color: var(--primary-color) #ffffff !important;
 }
+
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #686b99;
+}
+
 
 body {
     font-family: Arial, sans-serif;
@@ -43,7 +54,7 @@ img {
     height: auto;
 }
 
-button, input, textarea {
+input, textarea {
     border: none;
     outline: none;
     background: none;
@@ -54,11 +65,8 @@ input, textarea {
     resize: none;
 }
 
-/* Scrollbar styles */
-::-webkit-scrollbar {
-    width: 12px;
-    background-color: #ffffff;
-}
+
+
 
 /* Контейнер для главной страницы */
 .container-love-winter {
@@ -199,7 +207,7 @@ input, textarea {
     aspect-ratio: 3 / 4;
     width: 100%; /* Изображение занимает всю ширину карточки */
     height: auto; /* Высота изменяется пропорционально ширине */
-    object-fit: contain; /* Изображение масштабируется с сохранением пропорций */
+    object-fit: cover; /* Изображение масштабируется с сохранением пропорций */
 }
 
 .card a:hover {
@@ -253,7 +261,7 @@ input, textarea {
 
 .store-icons img {
     width: 35px; /* Размер иконок */
-    height: auto; /* Сохраняем пропорции иконок */
+    aspect-ratio: 1;
 }
 
 footer {

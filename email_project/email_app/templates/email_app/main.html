@@ -4,18 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Главная | TAVA</title>
     <link rel="stylesheet" href="{% static 'email_app/main.css' %}">
+    <link rel="stylesheet" href="{% static 'email_app/styles.css' %}">
+
 </head>
 <body>
     <header>
+        <img src="{% static 'img/bg-woman.png' %}" class="main-bg" alt="Задний фон">
         <div class="navbar">
             <div class="left-nav">
                 <a href="{% url 'main' %}"><img src="{% static 'img/42.png' %}" alt="TAVA"></a>
-                <a href="{% url 'main' %}" style="text-decoration: underline;">О бренде</a>
+                <a href="{% url 'about_brand' %}">О бренде</a>
                 <a href="{% url 'catalog' %}">Каталог</a>
                 <a href="{% url 'opt' %}">Оптовикам</a>
-                <a href="{% url 'catalog' %}">Контакты</a>
             </div>
             <div class="right-info">+7 (900) 451-00-06</div>
             <div class="burger-menu" id="burgerMenu">
@@ -39,12 +41,18 @@
                 <a href="{% url 'main' %}" style="text-decoration: underline;">О бренде</a>
                 <a href="{% url 'catalog' %}">Каталог</a>
                 <a href="{% url 'opt' %}">Оптовикам</a>
-                <a href="{% url 'catalog' %}">Контакты</a>
             </div>
         </div>
         <div class="text-block-header">
-            <h1>Tava - теплая и качетсвенная одежда для самого долгого сезона.</h1>
-            <p>Вы не начнете любить холод, но перестанете его замечать в теплой флисовой одежде TAVA</p>
+            <div class="right-head">
+                <img src="{% static 'img/bg-main.png' %}" class="main-bg" alt="Задний фон">
+            </div>
+        </div>
+        <div class="text-block-real">
+            <div class="text-block-real2">
+                <h1>Tava - теплая и качетсвенная одежда для самого долгого сезона.</h1>
+                <p>Вы не начнете любить холод, но перестанете его замечать в теплой флисовой одежде TAVA</p>
+            </div>
         </div>
     </header>
     <main>
@@ -62,7 +70,7 @@
                             </a>
                             <div class="more">
                                 <a href="{% url 'product-detail' product.pk %}" style="text-decoration: underline;">Подробнее...</a>
-                                <span>Рост 128-170</span>
+                                <p>Рост 128-170</p>
                             </div>
                             <h2>{{ product.name }}</h2>
                         </div>
@@ -87,7 +95,7 @@
                             </a>
                             <div class="more">
                                 <a href="{% url 'product-detail' product.pk %}" style="text-decoration: underline;">Подробнее...</a>
-                                <span>Рост 128-170</span>
+                                <p>Рост 128-170</p>
                             </div>
                             <h2>{{ product.name }}</h2>
                         </div>
@@ -115,7 +123,7 @@
                                 </a>
                                 <div class="more">
                                     <a href="{% url 'product-detail' product.pk %}" style="text-decoration: underline;">Подробнее...</a>
-                                    <span>Рост 128-170</span>
+                                    <p>Рост 128-170</p>
                                 </div>
                                 <h2>{{ product.name }}</h2>
                             </div>
@@ -221,13 +229,13 @@
             <div class="footer-links">
                 <div class="footer-column">
                     <p class="footer-title">Разделы</p>
-                    <p><a href="#">О бренде</a></p>
-                    <p><a href="#">Каталог</a></p>
+                    <p><a href="{% url 'about_brand' %}">О бренде</a></p>
+                    <p><a href="{% url 'catalog' %}">Каталог</a></p>
                 </div>
                 <div class="footer-column">
                     <p class="footer-title-p">&nbsp;</p>
-                    <p><a href="#">Оптовикам</a></p>
-                    <p><a href="#">Контакты</a></p>
+                    <p><a href="{% url 'opt' %}">Оптовикам</a></p>
+                    <p><a href="">Контакты</a></p>
                 </div>
             </div>
             <div class="footer-address">

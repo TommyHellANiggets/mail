@@ -1,72 +1,66 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+@font-face {
+    font-family: "Unbounded";
+    src: url("../fonts/Unbounded.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Unbounded-Regular";
+    src: url("../fonts/Unbounded-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Muller";
+    src: url("../fonts/Muller.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) #ffffff;
 }
 
-.container {
-    height: 100%;
-    width: 100%;
-    background-image: url('/static/img/bg-bottom-main.png');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
 }
 
-h1 {
-    margin-bottom: 20px;
-    color: #333;
+ul, ol {
+    list-style: none;
 }
 
-form {
-    margin-bottom: 20px;
-}
-
-input[type="email"] {
-    padding: 10px;
-    width: calc(100% - 22px);
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.btn {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background-color: #0056b3;
-}
-
-.main-img {
-    display: flex;
-    height: 400px;
-    width: 400px;
-    background-color: white;
-    text-align: center;
-    margin: auto 0;
-    border-radius: 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-.box a {
-    padding: 10px 40px;
-    border-radius: 10px;
-    background-color: #a0ff2b;
+a {
     text-decoration: none;
-    margin-top: 50px !important;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button, input, textarea {
+    border: none;
+    outline: none;
+    background: none;
+    font: inherit;
+}
+
+input, textarea {
+    resize: none;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #ffffff;
 }
